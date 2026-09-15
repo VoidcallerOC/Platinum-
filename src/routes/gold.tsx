@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Glyph } from "@/components/glyph";
 import { SectionKicker } from "@/components/section-kicker";
 import { Button } from "@/components/ui/button";
 import { pageTitle } from "@/lib/seo";
@@ -50,10 +51,10 @@ function GoldPage() {
       <div className="shell grid items-end gap-10 py-12 md:grid-cols-12 md:py-16">
         <div className="md:col-span-6">
           <SectionKicker>Gold & jewelry</SectionKicker>
-          <h1 className="mt-3 font-display text-5xl leading-[0.95] tracking-tight md:text-6xl">
+          <h1 className="mt-3 font-display text-[clamp(3.2rem,6vw,5.6rem)] font-medium leading-[0.96] tracking-[-0.04em]">
             Sell gold & jewelry
           </h1>
-          <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+          <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-muted">
             Two Connecticut counters. No invented formula. No “we pay the most”
             theatrics. Bring the metal. They’ll look at it.
           </p>
@@ -63,34 +64,35 @@ function GoldPage() {
               search={{ intent: "sell", category: "gold-jewelry" }}
             >
               Request a gold quote
+              <Glyph />
             </Link>
           </Button>
         </div>
-        <figure className="md:col-span-6">
+        <figure className="border border-wood md:col-span-6">
           <img
             src="/images/cat-jewelry.jpg"
             alt="Gold jewelry and a coin on a green velvet pad, ready for inspection"
-            className="aspect-[4/3] w-full rounded-lg object-cover"
+            className="aspect-[4/5] w-full object-cover"
             width={1600}
-            height={1200}
+            height={2000}
           />
         </figure>
       </div>
       <section className="border-t border-line">
-        <ol className="shell max-w-3xl py-12 md:py-16">
+        <ol className="shell max-w-3xl list-none py-12 md:py-16">
           {POINTS.map((point, i) => (
             <li
               key={point.title}
-              className="grid grid-cols-[auto_1fr] gap-5 border-t border-line py-7 first:border-t-0"
+              className="grid grid-cols-[3rem_minmax(0,1fr)] gap-4 border-t border-line py-[1.7rem] first:border-t-0"
             >
-              <span className="font-display text-2xl text-muted">
+              <span className="text-[0.78rem] font-bold text-brick">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
-                <h2 className="font-display text-3xl tracking-tight">
+                <h2 className="m-0 mb-2 text-[1.55rem] font-semibold tracking-[-0.04em]">
                   {point.title}
                 </h2>
-                <p className="mt-2 text-ink-soft">{point.body}</p>
+                <p className="m-0 max-w-[42ch] text-muted">{point.body}</p>
               </div>
             </li>
           ))}

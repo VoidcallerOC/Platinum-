@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Glyph } from "@/components/glyph";
 import { SectionKicker } from "@/components/section-kicker";
 import { Button } from "@/components/ui/button";
 import { SELL_STEPS } from "@/lib/business";
@@ -22,44 +23,44 @@ function SellPage() {
   return (
     <main id="main" className="shell py-12 md:py-16">
       <SectionKicker>Sell</SectionKicker>
-      <h1 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] tracking-tight md:text-6xl">
+      <h1 className="mt-3 max-w-[16ch] font-display text-[clamp(3.2rem,6vw,5.6rem)] font-medium leading-[0.96] tracking-[-0.04em]">
         Sell it if you don’t want it back.
       </h1>
-      <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">
+      <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-muted">
         Old and broken gold, diamonds, coins, bullion, watches, handbags,
         electronics, tools, instruments, collectibles, vehicles. Bring the item.
         Bring ID. Walk out with a decision made at the counter.
       </p>
-      <div className="mt-7 flex flex-wrap gap-3">
+      <div className="mt-7 flex flex-wrap items-center gap-6">
         <Button asChild>
           <Link to="/quote" search={{ intent: "sell" }}>
             Request a sell quote
+            <Glyph />
           </Link>
         </Button>
-        <Button asChild variant="outline">
-          <Link
-            to="/quote"
-            search={{ intent: "sell", category: "gold-jewelry" }}
-          >
-            Sell gold & jewelry
-          </Link>
-        </Button>
+        <Link
+          to="/quote"
+          search={{ intent: "sell", category: "gold-jewelry" }}
+          className="text-link"
+        >
+          Sell gold & jewelry
+        </Link>
       </div>
 
-      <ol className="mt-14 max-w-3xl">
+      <ol className="mt-14 max-w-3xl list-none border-t border-line p-0">
         {SELL_STEPS.map((step, i) => (
           <li
             key={step.title}
-            className="grid grid-cols-[auto_1fr] gap-5 border-t border-line py-7"
+            className="grid grid-cols-[3rem_minmax(0,1fr)] gap-4 border-b border-line py-[1.7rem]"
           >
-            <span className="font-display text-2xl text-muted">
+            <span className="text-[0.78rem] font-bold text-brick">
               {String(i + 1).padStart(2, "0")}
             </span>
             <div>
-              <h2 className="font-display text-3xl tracking-tight">
+              <h2 className="m-0 mb-2 text-[1.55rem] font-semibold tracking-[-0.04em]">
                 {step.title}
               </h2>
-              <p className="mt-2 text-ink-soft">{step.body}</p>
+              <p className="m-0 max-w-[42ch] text-muted">{step.body}</p>
             </div>
           </li>
         ))}

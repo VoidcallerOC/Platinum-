@@ -1,9 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  MapPinned,
-  Phone,
-} from "lucide-react";
+import { Glyph } from "@/components/glyph";
 import { SectionKicker } from "@/components/section-kicker";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,9 +17,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: pageTitle(
-          "Pawn, Sell, Shop — Bristol & New Britain",
-        ),
+        title: pageTitle("Pawn, Sell, Shop — Bristol & New Britain"),
       },
       {
         name: "description",
@@ -39,6 +33,9 @@ function Home() {
   return (
     <main id="main">
       <Hero />
+      <Marquee />
+      <Story />
+      <Intents />
       <PawnSell />
       <QuoteBand />
       <GoldBand />
@@ -53,149 +50,286 @@ function Home() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-line">
-      <div className="shell grid items-end gap-10 py-12 md:grid-cols-12 md:py-16 lg:py-20">
-        <div className="md:col-span-7">
-          <p className="text-[0.72rem] font-semibold tracking-[0.18em] text-muted uppercase">
-            Two Connecticut shops · Bristol & New Britain
+    <section className="section overflow-hidden bg-paper pt-[clamp(4.5rem,8vw,8.5rem)]">
+      <div className="shell grid items-end gap-[clamp(2.5rem,7vw,7rem)] md:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)]">
+        <div className="pb-[0.35rem]">
+          <p className="mb-4 text-[0.78rem] font-semibold tracking-[0.06em] text-brick uppercase">
+            <span className="live-dot" aria-hidden="true" />
+            Bristol & New Britain · Two counters · Connecticut
           </p>
-          <h1 className="mt-4 max-w-[14ch] font-display text-[3.1rem] leading-[0.92] tracking-[-0.045em] text-ink sm:text-6xl lg:text-[5.2rem]">
+          <h1 className="mb-6 max-w-[16ch] font-display text-[clamp(3.2rem,7.7vw,7.3rem)] font-medium leading-[0.96] tracking-[-0.04em] text-ink">
             {BUSINESS.heroLine}
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
-            {BUSINESS.tagline} Shop the floor if you’re looking. Final offers
-            happen at the counter — not in a website calculator.
+          <p className="m-0 max-w-[52ch] text-[clamp(1.08rem,1.8vw,1.3rem)] leading-[1.58] text-muted">
+            <em className="font-serif text-ink not-italic">{BUSINESS.tagline}</em>{" "}
+            Shop the floor if you’re looking. Final offers happen at the counter
+            — not in a website calculator.
           </p>
-          <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4">
-            <IntentLink to="/pawn" label="Pawn" hint="Want it back" />
-            <IntentLink to="/sell" label="Sell" hint="Let it go" />
-            <IntentLink to="/shop" label="Shop" hint="See the floor" />
-            <IntentLink to="/visit" label="Visit" hint="Two stores" />
-          </div>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg">
+          <p className="mt-[1.1rem] max-w-[52ch] text-base font-semibold text-muted">
+            Platinum Pawn. Bristol and New Britain, Connecticut.
+            <br />
+            <span className="text-muted">For the people sitting in the car with the item beside them.</span>
+          </p>
+          <div className="mt-[2.35rem] flex flex-wrap items-center gap-6">
+            <Button asChild>
               <Link to="/quote">
                 Request a quote
-                <ArrowRight className="size-4" />
+                <Glyph />
               </Link>
             </Button>
-            <p className="text-sm text-muted">
-              Photos help. The offer is made in person.
-            </p>
+            <Link to="/pawn" className="text-link">
+              Pawn or sell
+              <Glyph className="glyph--optical-bold">↓</Glyph>
+            </Link>
           </div>
+          <dl className="mt-[2.6rem] grid grid-cols-3 gap-x-8 gap-y-6 border-t border-line pt-[1.3rem]">
+            <div>
+              <dt className="mb-[0.35rem] text-[0.78rem] font-semibold tracking-[0.04em] text-muted uppercase">
+                Locations
+              </dt>
+              <dd className="m-0 font-serif text-[clamp(1.9rem,3.2vw,2.6rem)] leading-none tracking-[-0.03em]">
+                2
+              </dd>
+            </div>
+            <div>
+              <dt className="mb-[0.35rem] text-[0.78rem] font-semibold tracking-[0.04em] text-muted uppercase">
+                Serving
+              </dt>
+              <dd className="m-0 font-serif text-[clamp(1.9rem,3.2vw,2.6rem)] leading-none tracking-[-0.03em]">
+                10<span className="align-[0.4em] font-sans text-[0.55em] font-bold text-brick">+</span>
+              </dd>
+            </div>
+            <div>
+              <dt className="mb-[0.35rem] text-[0.78rem] font-semibold tracking-[0.04em] text-muted uppercase">
+                Walk-in
+              </dt>
+              <dd className="m-0 font-serif text-[clamp(1.9rem,3.2vw,2.6rem)] leading-none tracking-[-0.03em]">
+                18<span className="align-[0.4em] font-sans text-[0.55em] font-bold text-brick">+</span>
+              </dd>
+            </div>
+          </dl>
         </div>
-        <figure className="md:col-span-5">
-          <img
-            src="/images/hero-counter.jpg"
-            alt="Jewelry, a watch, and a ring on a green felt pad at a pawn counter"
-            className="aspect-[5/4] w-full rounded-lg object-cover"
-            width={1600}
-            height={1280}
-          />
-          <figcaption className="mt-3 text-sm text-muted">
-            Bring the item. Bring ID. The appraisal happens here.
-          </figcaption>
-        </figure>
+        <aside className="hero-card mb-[0.2rem]" aria-label="What to bring">
+          <p className="mb-4 text-[0.78rem] font-semibold tracking-[0.06em] text-ink uppercase">
+            Built for the counter
+          </p>
+          <ul className="check-list">
+            <li>Bring the item</li>
+            <li>Bring government-issued photo ID</li>
+            <li>Appraisal happens in store</li>
+            <li>The offer is made in person</li>
+          </ul>
+          <p className="mt-[1.4rem] border-t border-line pt-4 text-[0.86rem] font-semibold text-muted">
+            Photos help. They do not replace the inspection.
+          </p>
+        </aside>
       </div>
     </section>
   );
 }
 
-function IntentLink({
-  to,
-  label,
-  hint,
-}: {
-  to: "/pawn" | "/sell" | "/shop" | "/visit";
-  label: string;
-  hint: string;
-}) {
+function Marquee() {
+  const bits = [
+    "Bristol",
+    "New Britain",
+    "Pawn",
+    "Sell",
+    "Gold & jewelry",
+    "Watches",
+    "Tools",
+    "Shop in store",
+    "Final offer in person",
+    "Over 10 years",
+  ];
+  const loop = [...bits, ...bits];
   return (
-    <Link
-      to={to}
-      className="group flex min-h-[5.5rem] flex-col justify-between rounded-lg bg-cream px-4 py-3 no-underline shadow-[0_0_0_1px_var(--color-line)] transition-colors hover:bg-paper-2"
-    >
-      <span className="font-display text-2xl tracking-tight text-ink">
-        {label}
-      </span>
-      <span className="text-xs font-medium tracking-wide text-muted uppercase">
-        {hint}
-      </span>
-    </Link>
+    <section className="marquee-band" aria-label="Locations and intents">
+      <div className="marquee">
+        <div className="marquee-track">
+          {loop.map((bit, i) => (
+            <span key={`${bit}-${i}`}>
+              {bit} <Glyph marker>◆</Glyph>
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Story() {
+  return (
+    <section className="section border-y border-wood bg-cream" aria-labelledby="story-title">
+      <div className="shell grid items-start gap-[clamp(2.5rem,8vw,8rem)] md:grid-cols-[minmax(0,0.9fr)_minmax(20rem,1fr)]">
+        <div className="md:sticky md:top-28">
+          <SectionKicker dark>The starting point</SectionKicker>
+          <h2
+            id="story-title"
+            className="mt-3 max-w-[10ch] text-[clamp(2.5rem,5vw,5.6rem)] leading-[0.96] tracking-[-0.07em]"
+          >
+            Pawn it if you want it back.
+            <br />
+            <em>Sell it if you don’t.</em>
+          </h2>
+        </div>
+        <div className="max-w-[39rem] pt-1">
+          <p className="mb-5 text-[clamp(1.05rem,1.7vw,1.35rem)] leading-[1.55] text-ink">
+            The current site prepares customers for a slogan. The store prepares
+            them for a counter offer. This page is the bridge — what you need to
+            do, what to bring, which store, then walk in.
+          </p>
+          <p className="mb-5 text-[clamp(1.05rem,1.7vw,1.35rem)] leading-[1.55] text-ink">
+            There is no online valuation. There is no fake inventory. There is a
+            quote request that gets you to the right counter with the right
+            expectation.
+          </p>
+          <p className="story-formula">
+            <span>Intent</span>
+            <b>→</b>
+            <span>Quote</span>
+            <b>→</b>
+            <span>Visit</span>
+            <b>→</b>
+            <span>Offer</span>
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Intents() {
+  const items = [
+    {
+      n: "01",
+      title: "Pawn",
+      body: "Need cash, keep the option. The item is collateral. You still own it while the loan is open.",
+      to: "/pawn" as const,
+    },
+    {
+      n: "02",
+      title: "Sell",
+      body: "Ready to part with it. Gold, a watch, tools you don’t use. Offer after inspection.",
+      to: "/sell" as const,
+    },
+    {
+      n: "03",
+      title: "Shop",
+      body: "Merchandise moves. The floor is the catalog. This is not an online store.",
+      to: "/shop" as const,
+    },
+    {
+      n: "04",
+      title: "Visit",
+      body: "Bristol and New Britain. Two addresses, two phones, two Sunday hours.",
+      to: "/visit" as const,
+    },
+  ];
+  return (
+    <section className="section" aria-labelledby="intent-title">
+      <div className="shell">
+        <div className="max-w-[47rem]">
+          <SectionKicker index="01">What do you need to do?</SectionKicker>
+          <h2
+            id="intent-title"
+            className="mb-5 text-[clamp(2.6rem,5.5vw,5.4rem)] font-semibold tracking-[-0.055em]"
+          >
+            Four paths. One counter.
+          </h2>
+          <p className="m-0 max-w-[48ch] text-muted">
+            Start with the job, not the slogan. Request a quote when you already
+            have the item in hand.
+          </p>
+        </div>
+        <div className="mt-[clamp(2.8rem,5vw,5.3rem)] grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {items.map((item) => (
+            <Link
+              key={item.n}
+              to={item.to}
+              className="flex min-h-[19rem] flex-col border border-wood bg-paper p-6 no-underline"
+            >
+              <p className="mb-auto text-[0.78rem] font-bold tracking-[0.04em] text-brick">
+                {item.n}
+              </p>
+              <h3 className="mt-9 mb-[0.85rem] text-[1.5rem] font-semibold tracking-[-0.04em]">
+                {item.title}
+              </h3>
+              <p className="m-0 text-muted">{item.body}</p>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
 function PawnSell() {
   return (
-    <section className="border-b border-line py-16 md:py-24" aria-labelledby="pawn-sell-heading">
+    <section className="section bg-cream" aria-labelledby="pawn-sell-heading">
       <div className="shell">
-        <SectionKicker index="01">Pawn or sell</SectionKicker>
+        <SectionKicker index="02">Pawn or sell</SectionKicker>
         <h2
           id="pawn-sell-heading"
-          className="mt-3 max-w-3xl font-display text-4xl tracking-tight md:text-5xl"
+          className="mt-3 max-w-3xl text-[clamp(2.6rem,5.5vw,5.4rem)] leading-[1.02] tracking-[-0.055em]"
         >
-          Pawn it if you want it back.
+          Need cash, keep the option.
           <br />
-          Sell it if you don’t.
+          <em>Ready to part with it.</em>
         </h2>
-        <div className="mt-12 grid gap-px bg-line md:grid-cols-2">
-          <article className="bg-paper px-0 py-8 md:pr-10 md:pl-0">
-            <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-green uppercase">
+        <div className="mt-[2.4rem] grid gap-4 md:grid-cols-2">
+          <article className="border border-wood bg-cream px-[1.4rem] py-[1.5rem]">
+            <p className="mb-4 text-[0.76rem] font-bold tracking-[0.08em] text-muted uppercase">
               Pawn
             </p>
-            <h3 className="mt-2 font-display text-3xl tracking-tight">
+            <h3 className="text-[1.55rem] tracking-[-0.04em]">
               Need cash, keep the option.
             </h3>
-            <p className="mt-3 text-ink-soft">
+            <p className="mt-3 text-muted">
               The item is collateral. You still own it while the loan is open.
               No credit check. Redeem on the shop’s published terms.
             </p>
-            <ol className="mt-6 space-y-3">
-              {PAWN_STEPS.map((step, i) => (
-                <li key={step.title} className="flex gap-4">
-                  <span className="w-8 shrink-0 font-display text-xl text-muted">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span>
-                    <span className="font-medium">{step.title}.</span>{" "}
-                    <span className="text-ink-soft">{step.body}</span>
-                  </span>
+            <ol className="mt-6 list-none p-0">
+              {PAWN_STEPS.map((step) => (
+                <li
+                  key={step.title}
+                  className="border-t border-line py-[0.7rem] text-[0.98rem] font-medium first:border-t-0 first:pt-0"
+                >
+                  {step.title}
                 </li>
               ))}
             </ol>
             <Button asChild className="mt-8" variant="outline">
               <Link to="/quote" search={{ intent: "pawn" }}>
                 Start a pawn request
+                <Glyph />
               </Link>
             </Button>
           </article>
-          <article className="bg-paper px-0 py-8 md:pr-0 md:pl-10">
-            <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-green uppercase">
+          <article className="border border-muted bg-paper-2 px-[1.4rem] py-[1.5rem]">
+            <p className="mb-4 text-[0.76rem] font-bold tracking-[0.08em] text-brick uppercase">
               Sell
             </p>
-            <h3 className="mt-2 font-display text-3xl tracking-tight">
+            <h3 className="text-[1.55rem] tracking-[-0.04em]">
               Ready to part with it.
             </h3>
-            <p className="mt-3 text-ink-soft">
+            <p className="mt-3 text-muted">
               Old gold, a watch you don’t wear, tools you don’t use. Bring it
               in. The offer is made after the item is inspected — not before.
             </p>
-            <ol className="mt-6 space-y-3">
-              {SELL_STEPS.map((step, i) => (
-                <li key={step.title} className="flex gap-4">
-                  <span className="w-8 shrink-0 font-display text-xl text-muted">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span>
-                    <span className="font-medium">{step.title}.</span>{" "}
-                    <span className="text-ink-soft">{step.body}</span>
-                  </span>
+            <ol className="mt-6 list-none p-0">
+              {SELL_STEPS.map((step) => (
+                <li
+                  key={step.title}
+                  className="border-t border-line py-[0.7rem] text-[0.98rem] font-medium first:border-t-0 first:pt-0"
+                >
+                  {step.title}
                 </li>
               ))}
             </ol>
             <Button asChild className="mt-8">
               <Link to="/quote" search={{ intent: "sell" }}>
                 Start a sell request
+                <Glyph />
               </Link>
             </Button>
           </article>
@@ -207,34 +341,25 @@ function PawnSell() {
 
 function QuoteBand() {
   return (
-    <section className="bg-green-deep py-16 text-cream md:py-20" aria-labelledby="quote-heading">
-      <div className="shell grid gap-10 md:grid-cols-12">
-        <div className="md:col-span-7">
-          <SectionKicker index="02">Request a quote</SectionKicker>
-          <h2
-            id="quote-heading"
-            className="mt-3 font-display text-4xl tracking-tight text-cream md:text-5xl"
-          >
-            Tell us what you’re bringing.
-            <br />
-            Then come in.
-          </h2>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-cream/75">
-            {EXPECTATION_LINE} This is how the website should work — as a
-            bridge from your passenger seat to the counter.
-          </p>
-        </div>
-        <div className="flex flex-col justify-end gap-3 md:col-span-5">
-          <Button asChild size="lg" variant="cream">
+    <section className="section" aria-labelledby="quote-heading">
+      <div className="shell">
+        <div className="flex flex-col items-start justify-between gap-8 border-2 border-brick bg-cream p-[clamp(1.35rem,3vw,2rem)] shadow-[0.45rem_0.45rem_0_rgb(239_231_206/0.14)] md:flex-row md:items-center">
+          <div>
+            <SectionKicker index="03">Request a quote</SectionKicker>
+            <h2
+              id="quote-heading"
+              className="m-0 text-[clamp(1.05rem,2vw,1.3rem)] font-semibold tracking-tight"
+            >
+              Tell us what you’re bringing. Then come in.
+            </h2>
+            <p className="mt-2 max-w-xl text-muted">{EXPECTATION_LINE}</p>
+          </div>
+          <Button asChild size="lg" className="w-full md:w-auto">
             <Link to="/quote">
               Request a quote
-              <ArrowRight className="size-4" />
+              <Glyph />
             </Link>
           </Button>
-          <p className="text-sm text-cream/60">
-            Choose pawn or sell, the item type, and which store. Attach photos
-            if you have them.
-          </p>
         </div>
       </div>
     </section>
@@ -243,45 +368,45 @@ function QuoteBand() {
 
 function GoldBand() {
   return (
-    <section className="border-b border-line py-16 md:py-24" aria-labelledby="gold-heading">
-      <div className="shell grid items-center gap-10 md:grid-cols-12">
-        <figure className="md:col-span-6 md:col-start-7 md:row-start-1">
+    <section className="section border-t border-line" aria-labelledby="gold-heading">
+      <div className="shell grid items-center gap-10 md:grid-cols-12 md:gap-16">
+        <figure className="border border-wood md:col-span-6 md:col-start-7 md:row-start-1">
           <img
             src="/images/cat-jewelry.jpg"
             alt="Gold chains, rings, and a coin on a green velvet appraisal pad"
-            className="aspect-[4/3] w-full rounded-lg object-cover"
+            className="aspect-[4/5] w-full object-cover"
             width={1600}
-            height={1200}
+            height={2000}
           />
         </figure>
         <div className="md:col-span-5 md:row-start-1">
-          <SectionKicker index="03">Gold & jewelry</SectionKicker>
+          <SectionKicker index="04">Gold & jewelry</SectionKicker>
           <h2
             id="gold-heading"
-            className="mt-3 font-display text-4xl tracking-tight md:text-5xl"
+            className="mt-3 text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[1.05] tracking-tight"
           >
             Broken, old, or still on the chain — they look at the metal.
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+          <p className="mt-5 text-lg leading-relaxed text-muted">
             Gold, silver, diamonds, coins, and bullion are evaluated in store.
             Condition matters. Documentation can matter. The market moves.
             There is no online formula on this site, because there isn’t one
             that replaces the counter.
           </p>
-          <Button asChild className="mt-7">
-            <Link
-              to="/quote"
-              search={{ intent: "sell", category: "gold-jewelry" }}
-            >
-              Sell gold & jewelry
+          <div className="mt-7 flex flex-wrap items-center gap-5">
+            <Button asChild>
+              <Link
+                to="/quote"
+                search={{ intent: "sell", category: "gold-jewelry" }}
+              >
+                Sell gold & jewelry
+                <Glyph />
+              </Link>
+            </Button>
+            <Link to="/gold" className="text-link">
+              How gold is handled
             </Link>
-          </Button>
-          <Link
-            to="/gold"
-            className="ml-4 inline-flex min-h-12 items-center text-sm font-medium text-green underline underline-offset-4"
-          >
-            How gold is handled
-          </Link>
+          </div>
         </div>
       </div>
     </section>
@@ -290,43 +415,51 @@ function GoldBand() {
 
 function ShopBand() {
   return (
-    <section className="border-b border-line py-16 md:py-24" aria-labelledby="shop-heading">
+    <section className="section bg-cream" aria-labelledby="shop-heading">
       <div className="shell">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <SectionKicker index="04">Shop in store</SectionKicker>
+            <SectionKicker index="05">Shop in store</SectionKicker>
             <h2
               id="shop-heading"
-              className="mt-3 font-display text-4xl tracking-tight md:text-5xl"
+              className="mt-3 text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[1.05] tracking-tight"
             >
               Merchandise moves. The floor is the catalog.
             </h2>
-            <p className="mt-4 text-lg text-ink-soft">
+            <p className="mt-4 text-lg text-muted">
               Jewelry, watches, handbags, tools, electronics, instruments,
               collectibles. Stock changes as people pawn and sell. This is not
               an online store.
             </p>
           </div>
-          <Button asChild variant="outline">
-            <Link to="/shop">See what to look for</Link>
-          </Button>
+          <Link to="/shop" className="text-link whitespace-nowrap">
+            See what to look for
+            <Glyph />
+          </Link>
         </div>
-        <ul className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
+        <ul className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
           {SHOP_CATEGORIES.slice(0, 8).map((cat) => (
-            <li key={cat.id} className="group">
+            <li key={cat.id} className="border border-wood bg-paper">
               <Link
                 to="/shop"
-                className="block no-underline"
+                className="group block no-underline"
                 aria-label={`Shop ${cat.short} in store`}
               >
                 {cat.image ? (
                   <img
                     src={cat.image}
                     alt=""
-                    className="aspect-[4/3] w-full rounded-md object-cover"
+                    className="aspect-[4/5] w-full object-cover"
                   />
                 ) : null}
-                <p className="mt-2 font-medium">{cat.short}</p>
+                <div className="px-[1.25rem] py-[1.15rem]">
+                  <p className="text-[0.76rem] font-semibold tracking-[0.05em] text-brick uppercase">
+                    Floor
+                  </p>
+                  <p className="mt-2 text-[1.15rem] font-semibold tracking-tight group-hover:text-brick">
+                    {cat.short}
+                  </p>
+                </div>
               </Link>
             </li>
           ))}
@@ -338,26 +471,37 @@ function ShopBand() {
 
 function LocationsBand() {
   return (
-    <section className="border-b border-line py-16 md:py-24" aria-labelledby="locations-heading">
+    <section className="section border-t border-line" aria-labelledby="locations-heading">
       <div className="shell">
-        <SectionKicker index="05">Two stores</SectionKicker>
+        <SectionKicker index="06">Two stores</SectionKicker>
         <h2
           id="locations-heading"
-          className="mt-3 max-w-3xl font-display text-4xl tracking-tight md:text-5xl"
+          className="mt-3 max-w-3xl text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[1.05] tracking-tight"
         >
           Bristol and New Britain are not the same counter.
         </h2>
-        <div className="mt-10 grid gap-8 md:grid-cols-2">
-          {LOCATION_LIST.map((loc) => (
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          {LOCATION_LIST.map((loc, i) => (
             <article
               key={loc.id}
-              className="flex flex-col border-t border-ink pt-6"
+              className={
+                i === 1
+                  ? "relative flex flex-col border-2 border-brick bg-paper p-6 shadow-[0.35rem_0.35rem_0_var(--color-brick)]"
+                  : "relative flex flex-col border-2 border-wood bg-paper p-6 shadow-[0.35rem_0.35rem_0_var(--color-wood)]"
+              }
             >
-              <h3 className="font-display text-3xl tracking-tight">{loc.city}</h3>
+              <span
+                className="absolute top-[0.85rem] right-[0.85rem] size-[0.7rem] rounded-[0.1rem] bg-brick"
+                aria-hidden="true"
+              />
+              <h3 className="text-[1.7rem] tracking-[-0.04em]">{loc.city}</h3>
               <p className="mt-2 text-lg">{loc.street}</p>
               <p className="text-muted">{loc.cityStateZip}</p>
               <p className="mt-4 font-medium">
-                <a href={loc.phoneHref} className="text-ink underline-offset-4 hover:underline">
+                <a
+                  href={loc.phoneHref}
+                  className="underline decoration-brick decoration-[0.16em] underline-offset-[0.23em]"
+                >
                   {loc.phone}
                 </a>
               </p>
@@ -371,22 +515,21 @@ function LocationsBand() {
               </dl>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Button asChild size="sm">
-                  <a href={loc.phoneHref}>
-                    <Phone className="size-3.5" />
-                    Call
-                  </a>
+                  <a href={loc.phoneHref}>Call</a>
                 </Button>
                 <Button asChild size="sm" variant="outline">
                   <a href={loc.mapsUrl} target="_blank" rel="noreferrer">
-                    <MapPinned className="size-3.5" />
                     Directions
+                    <Glyph />
                   </a>
                 </Button>
-                <Button asChild size="sm" variant="ghost">
-                  <Link to="/visit/$slug" params={{ slug: loc.id }}>
-                    Store details
-                  </Link>
-                </Button>
+                <Link
+                  to="/visit/$slug"
+                  params={{ slug: loc.id }}
+                  className="text-link inline-flex min-h-11 items-center"
+                >
+                  Store details
+                </Link>
               </div>
             </article>
           ))}
@@ -417,31 +560,31 @@ function TrustBand() {
   ];
 
   return (
-    <section className="border-b border-line py-16 md:py-24" aria-labelledby="trust-heading">
-      <div className="shell grid gap-12 md:grid-cols-12">
-        <div className="md:col-span-4">
-          <SectionKicker index="06">How this shop works</SectionKicker>
+    <section className="section bg-cream" aria-labelledby="trust-heading">
+      <div className="shell grid gap-[clamp(3rem,10vw,10rem)] md:grid-cols-[minmax(260px,0.72fr)_minmax(0,1fr)]">
+        <div className="md:sticky md:top-28 md:self-start">
+          <SectionKicker index="07">How this shop works</SectionKicker>
           <h2
             id="trust-heading"
-            className="mt-3 font-display text-4xl tracking-tight"
+            className="mt-3 text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[1.05] tracking-tight"
           >
             Trust is operational, not a slogan.
           </h2>
         </div>
-        <ol className="md:col-span-8">
+        <ol className="m-0 list-none border-t border-line p-0">
           {points.map((point, i) => (
             <li
               key={point.title}
-              className="grid grid-cols-[auto_1fr] gap-5 border-t border-line py-6"
+              className="grid grid-cols-[3rem_minmax(0,1fr)] gap-4 border-b border-line py-[1.7rem]"
             >
-              <span className="font-display text-xl text-muted">
+              <span className="text-[0.78rem] font-bold text-brick">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
-                <h3 className="font-display text-2xl tracking-tight">
+                <h3 className="m-0 mb-2 text-[1.55rem] font-semibold tracking-[-0.04em]">
                   {point.title}
                 </h3>
-                <p className="mt-2 text-ink-soft">{point.body}</p>
+                <p className="m-0 max-w-[42ch] text-muted">{point.body}</p>
               </div>
             </li>
           ))}
@@ -453,25 +596,25 @@ function TrustBand() {
 
 function FaqBand() {
   return (
-    <section className="border-b border-line py-16 md:py-24" aria-labelledby="faq-heading">
+    <section className="section border-t border-line" aria-labelledby="faq-heading">
       <div className="shell">
-        <SectionKicker index="07">Questions</SectionKicker>
+        <SectionKicker index="08">Questions</SectionKicker>
         <h2
           id="faq-heading"
-          className="mt-3 font-display text-4xl tracking-tight"
+          className="mt-3 text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[1.05] tracking-tight"
         >
           Straight answers.
         </h2>
-        <div className="mt-10 columns-1 gap-x-12 md:columns-2">
+        <div className="mt-10 grid gap-3 md:grid-cols-2 md:gap-x-5">
           {FAQS.map((item) => (
             <details
               key={item.q}
-              className="mb-3 break-inside-avoid rounded-lg bg-cream px-5 py-4 shadow-[0_0_0_1px_var(--color-line)]"
+              className="border border-wood bg-cream px-[1.05rem] py-[0.95rem]"
             >
-              <summary className="cursor-pointer list-none font-medium text-ink marker:content-none [&::-webkit-details-marker]:hidden">
+              <summary className="cursor-pointer list-none font-bold text-ink marker:content-none [&::-webkit-details-marker]:hidden">
                 {item.q}
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+              <p className="mt-[0.7rem] text-sm leading-relaxed text-muted">
                 {item.a}
               </p>
             </details>
@@ -484,22 +627,29 @@ function FaqBand() {
 
 function FinalCta() {
   return (
-    <section className="py-16 md:py-24">
-      <div className="shell">
-        <h2 className="max-w-3xl font-display text-4xl tracking-tight md:text-6xl">
-          Sitting in the car with the item beside you?
-        </h2>
-        <p className="mt-5 max-w-xl text-lg text-ink-soft">
-          Request a quote, pick a store, then walk in. The website prepares the
-          visit. The counter makes the offer.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
+    <section className="section border-t border-wood bg-cream">
+      <div className="shell grid items-start gap-[clamp(3rem,10vw,10rem)] md:grid-cols-[minmax(0,0.86fr)_minmax(340px,0.8fr)]">
+        <div>
+          <SectionKicker>Walk in ready</SectionKicker>
+          <h2 className="mb-5 max-w-[14ch] text-[clamp(2.6rem,5.5vw,5.4rem)] font-semibold tracking-[-0.055em]">
+            Sitting in the car with the item beside you?
+          </h2>
+          <p className="m-0 max-w-[48ch] text-muted">
+            Request a quote, pick a store, then walk in. The website prepares the
+            visit. The counter makes the offer.
+          </p>
+        </div>
+        <div className="flex flex-col justify-end gap-3">
           <Button asChild size="lg">
-            <Link to="/quote">Request a quote</Link>
+            <Link to="/quote">
+              Request a quote
+              <Glyph />
+            </Link>
           </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link to="/visit">Get directions</Link>
-          </Button>
+          <Link to="/visit" className="text-link">
+            Get directions
+            <Glyph />
+          </Link>
         </div>
       </div>
     </section>

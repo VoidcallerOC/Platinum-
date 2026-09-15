@@ -1,5 +1,4 @@
 import { useNavigate } from "@tanstack/react-router";
-import { ImagePlus, X } from "lucide-react";
 import { useId, useMemo, useState, type FormEvent, type ReactNode } from "react";
 import {
   CATEGORIES,
@@ -13,6 +12,7 @@ import {
 } from "@/lib/business";
 import { isCategory, isIntent, isLocation, saveQuote } from "@/lib/quote-store";
 import { cn } from "@/lib/utils";
+import { Glyph } from "./glyph";
 import { Button } from "./ui/button";
 
 const MAX_PHOTOS = 5;
@@ -116,8 +116,8 @@ export function QuoteForm({
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-8">
-      <p className="rounded-md bg-paper-2 px-4 py-3 text-sm leading-relaxed text-ink-soft">
+    <form onSubmit={onSubmit} noValidate className="contact-form space-y-8">
+      <p className="border-l-4 border-brick bg-paper-2 px-[1.35rem] py-5 text-sm leading-relaxed text-ink">
         {DEMO_NOTICE}
       </p>
 
@@ -126,7 +126,7 @@ export function QuoteForm({
           id={`${formId}-errors`}
           tabIndex={-1}
           role="alert"
-          className="rounded-md border border-danger/30 bg-danger/8 px-4 py-3 text-sm text-danger"
+          className="border border-danger/30 bg-danger/8 px-4 py-3 text-sm text-danger"
         >
           <p className="font-semibold">Fix the following to continue:</p>
           <ul className="mt-1 list-disc pl-5">
@@ -138,7 +138,7 @@ export function QuoteForm({
       ) : null}
 
       <fieldset>
-        <legend className="font-display text-2xl tracking-tight">
+        <legend className="block text-[0.83rem] font-bold text-ink">
           What are you looking to do?
         </legend>
         <p className="mt-1 text-sm text-muted">
@@ -164,10 +164,10 @@ export function QuoteForm({
               <label
                 key={option.id}
                 className={cn(
-                  "flex min-h-24 cursor-pointer flex-col justify-center rounded-lg px-5 py-4 transition-colors",
+                  "flex min-h-24 cursor-pointer flex-col justify-center px-5 py-4 transition-colors",
                   selected
-                    ? "bg-green text-cream shadow-[0_0_0_1px_var(--color-green-deep)]"
-                    : "bg-cream text-ink shadow-[0_0_0_1px_var(--color-line)] hover:bg-paper-2",
+                    ? "border border-brick bg-brick text-paper"
+                    : "border border-wood bg-cream text-ink hover:border-brick",
                 )}
               >
                 <input
@@ -181,11 +181,13 @@ export function QuoteForm({
                     setErrors((e) => ({ ...e, intent: "" }));
                   }}
                 />
-                <span className="font-display text-xl">{option.title}</span>
+                <span className="text-xl font-semibold tracking-tight">
+                  {option.title}
+                </span>
                 <span
                   className={cn(
                     "mt-1 text-sm",
-                    selected ? "text-cream/80" : "text-muted",
+                    selected ? "text-paper/80" : "text-muted",
                   )}
                 >
                   {option.body}
@@ -200,7 +202,7 @@ export function QuoteForm({
       </fieldset>
 
       <fieldset>
-        <legend className="font-display text-2xl tracking-tight">
+        <legend className="block text-[0.83rem] font-bold text-ink">
           What type of item is it?
         </legend>
         <div className="mt-4 flex flex-wrap gap-2">
@@ -209,12 +211,7 @@ export function QuoteForm({
             return (
               <label
                 key={item.id}
-                className={cn(
-                  "inline-flex min-h-11 cursor-pointer items-center rounded-full px-4 text-sm font-medium",
-                  selected
-                    ? "bg-ink text-cream"
-                    : "bg-cream text-ink shadow-[0_0_0_1px_var(--color-line)] hover:bg-paper-2",
-                )}
+                className={cn("chip cursor-pointer", selected && "is-active")}
               >
                 <input
                   className="sr-only"
@@ -238,7 +235,7 @@ export function QuoteForm({
       </fieldset>
 
       <fieldset>
-        <legend className="font-display text-2xl tracking-tight">
+        <legend className="block text-[0.83rem] font-bold text-ink">
           Which location?
         </legend>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -248,10 +245,10 @@ export function QuoteForm({
               <label
                 key={loc.id}
                 className={cn(
-                  "flex min-h-24 cursor-pointer flex-col justify-center rounded-lg px-5 py-4",
+                  "flex min-h-24 cursor-pointer flex-col justify-center px-5 py-4",
                   selected
-                    ? "bg-green text-cream shadow-[0_0_0_1px_var(--color-green-deep)]"
-                    : "bg-cream text-ink shadow-[0_0_0_1px_var(--color-line)] hover:bg-paper-2",
+                    ? "border border-brick bg-brick text-paper"
+                    : "border border-wood bg-cream text-ink hover:border-brick",
                 )}
               >
                 <input
@@ -265,11 +262,13 @@ export function QuoteForm({
                     setErrors((e) => ({ ...e, location: "" }));
                   }}
                 />
-                <span className="font-display text-xl">{loc.city}</span>
+                <span className="text-xl font-semibold tracking-tight">
+                  {loc.city}
+                </span>
                 <span
                   className={cn(
                     "mt-1 text-sm",
-                    selected ? "text-cream/80" : "text-muted",
+                    selected ? "text-paper/80" : "text-muted",
                   )}
                 >
                   {loc.street}
@@ -315,10 +314,7 @@ export function QuoteForm({
         </Field>
       </div>
 
-      <Field
-        id={`${formId}-name`}
-        label="Your name (optional, demo only)"
-      >
+      <Field id={`${formId}-name`} label="Your name (optional, demo only)">
         <input
           id={`${formId}-name`}
           value={contactName}
@@ -362,16 +358,15 @@ export function QuoteForm({
       </Field>
 
       <fieldset>
-        <legend className="font-display text-2xl tracking-tight">
+        <legend className="block text-[0.83rem] font-bold text-ink">
           Photos
         </legend>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
           {PHOTO_GUIDANCE}
         </p>
         <div className="mt-4">
-          <label className="flex min-h-28 cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-line-strong bg-cream px-4 py-6 text-center hover:bg-paper-2">
-            <ImagePlus className="size-6 text-green" />
-            <span className="text-sm font-medium">Add photos</span>
+          <label className="flex min-h-28 cursor-pointer flex-col items-center justify-center gap-2 border border-dashed border-line-strong bg-cream px-4 py-6 text-center hover:border-brick">
+            <span className="text-sm font-bold">Add photos</span>
             <span className="text-xs text-muted">
               {photos.length} attached, {MAX_PHOTOS} maximum. Stays on this
               device.
@@ -394,15 +389,15 @@ export function QuoteForm({
                   <img
                     src={photo.url}
                     alt={`Upload ${index + 1}: ${photo.file.name}`}
-                    className="aspect-square w-full rounded-md object-cover"
+                    className="aspect-square w-full object-cover"
                   />
                   <button
                     type="button"
                     onClick={() => removePhoto(photo.id)}
-                    className="absolute top-1 right-1 flex size-8 items-center justify-center rounded-full bg-ink text-cream"
+                    className="absolute top-1 right-1 flex size-8 items-center justify-center bg-paper text-ink"
                     aria-label={`Remove ${photo.file.name}`}
                   >
-                    <X className="size-4" />
+                    ×
                   </button>
                 </li>
               ))}
@@ -411,9 +406,11 @@ export function QuoteForm({
         </div>
       </fieldset>
 
-      <div className="rounded-lg bg-green-deep px-5 py-5 text-cream">
-        <p className="font-display text-xl tracking-tight">Before you send</p>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-cream/80">
+      <div className="border-2 border-brick bg-cream px-5 py-5 shadow-[0.3rem_0.3rem_0_var(--color-brick)]">
+        <p className="text-[0.72rem] font-bold tracking-[0.06em] text-brick uppercase">
+          Before you send
+        </p>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink">
           {EXPECTATION_LINE}
         </p>
       </div>
@@ -421,6 +418,7 @@ export function QuoteForm({
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <Button type="submit" size="lg" disabled={submitting}>
           {submitting ? "Saving request…" : "Submit request"}
+          {submitting ? null : <Glyph />}
         </Button>
         <p className="text-sm text-muted">{DEMO_NOTICE}</p>
       </div>
@@ -445,11 +443,9 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-semibold text-ink">
+      <label htmlFor={id} className="block text-[0.83rem] font-bold text-ink">
         {label}
-        {required ? (
-          <span className="text-danger"> *</span>
-        ) : null}
+        {required ? <span className="text-danger"> *</span> : null}
       </label>
       {hint ? <p className="mt-1 text-sm text-muted">{hint}</p> : null}
       <div className="mt-2">{children}</div>

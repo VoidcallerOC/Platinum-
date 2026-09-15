@@ -25,7 +25,7 @@ export const Route = createRootRoute({
         name: "description",
         content: BUSINESS.description,
       },
-      { name: "theme-color", content: "#1C4A32" },
+      { name: "theme-color", content: "#070708" },
       { name: "author", content: "Forge-CT" },
     ],
     links: [
@@ -44,7 +44,7 @@ export const Route = createRootRoute({
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,560;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@500;600;700&display=swap",
       },
     ],
   }),
@@ -75,17 +75,17 @@ function RootDocument() {
 function NotFound() {
   return (
     <main id="main" className="shell py-20">
-      <p className="text-[0.72rem] font-semibold tracking-[0.18em] text-muted uppercase">
+      <p className="text-[0.78rem] font-semibold tracking-[0.06em] text-brick uppercase">
         404
       </p>
-      <h1 className="mt-3 font-display text-5xl tracking-tight">
+      <h1 className="mt-3 font-display text-5xl font-medium tracking-tight">
         That page isn’t here.
       </h1>
-      <p className="mt-4 max-w-md text-ink-soft">
+      <p className="mt-4 max-w-md text-muted">
         Try pawn, sell, shop, or visit — or request a quote from the start.
       </p>
       <p className="mt-8">
-        <Link to="/" className="font-medium text-green underline underline-offset-4">
+        <Link to="/" className="text-link">
           Back to Platinum Pawn
         </Link>
       </p>

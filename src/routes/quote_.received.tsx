@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { MapPinned, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Glyph } from "@/components/glyph";
 import { Button } from "@/components/ui/button";
 import { DEMO_NOTICE, categoryById, locationById } from "@/lib/business";
 import { loadQuote, type StoredQuote } from "@/lib/quote-store";
@@ -38,15 +38,18 @@ function QuoteReceivedPage() {
   if (!quote) {
     return (
       <main id="main" className="shell max-w-2xl py-16">
-        <h1 className="font-display text-4xl tracking-tight">
+        <h1 className="font-display text-[clamp(3.2rem,6vw,4.6rem)] font-medium tracking-tight">
           No request on this device
         </h1>
-        <p className="mt-4 text-ink-soft">
+        <p className="mt-4 text-muted">
           Quote submissions in this demo stay in your browser. Start a new
           request to see the confirmation state.
         </p>
         <Button asChild className="mt-6">
-          <Link to="/quote">Request a quote</Link>
+          <Link to="/quote">
+            Request a quote
+            <Glyph />
+          </Link>
         </Button>
       </main>
     );
@@ -58,14 +61,15 @@ function QuoteReceivedPage() {
 
   return (
     <main id="main" className="shell max-w-2xl py-12 md:py-20">
-      <p className="text-[0.72rem] font-semibold tracking-[0.18em] text-green uppercase">
+      <p className="text-[0.78rem] font-semibold tracking-[0.06em] text-brick uppercase">
+        <span className="live-dot" aria-hidden="true" />
         Demo confirmation
       </p>
-      <h1 className="mt-3 font-display text-5xl leading-[0.95] tracking-tight">
+      <h1 className="mt-3 font-display text-[clamp(3.2rem,6vw,5.4rem)] font-medium leading-[0.96] tracking-[-0.04em]">
         You’re all set.
       </h1>
-      <p className="mt-4 text-xl text-ink-soft">Your request has been received.</p>
-      <p className="mt-3 max-w-xl text-ink-soft">
+      <p className="mt-4 text-xl text-ink">Your request has been received.</p>
+      <p className="mt-3 max-w-xl text-muted">
         Your item still needs to be inspected in person before a final offer
         can be made.
       </p>
@@ -82,21 +86,24 @@ function QuoteReceivedPage() {
       </dl>
 
       {loc ? (
-        <div className="mt-8 rounded-lg bg-cream p-5 shadow-[0_0_0_1px_var(--color-line)]">
-          <p className="font-display text-2xl tracking-tight">{loc.city}</p>
+        <div className="relative mt-8 border-2 border-brick bg-paper p-5 shadow-[0.35rem_0.35rem_0_var(--color-brick)]">
+          <span
+            className="absolute top-[0.85rem] right-[0.85rem] size-[0.7rem] rounded-[0.1rem] bg-brick"
+            aria-hidden="true"
+          />
+          <p className="text-[1.7rem] font-semibold tracking-[-0.04em]">
+            {loc.city}
+          </p>
           <p className="mt-1">{loc.addressLine}</p>
           <p className="text-sm text-muted">{loc.sundayNote}</p>
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-5 flex flex-wrap items-center gap-3">
             <Button asChild>
-              <a href={loc.phoneHref}>
-                <Phone className="size-4" />
-                Call this location
-              </a>
+              <a href={loc.phoneHref}>Call this location</a>
             </Button>
             <Button asChild variant="outline">
               <a href={loc.mapsUrl} target="_blank" rel="noreferrer">
-                <MapPinned className="size-4" />
                 Get directions
+                <Glyph />
               </a>
             </Button>
           </div>

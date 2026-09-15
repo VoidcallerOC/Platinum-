@@ -4,23 +4,24 @@ import type { ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 font-medium tracking-tight transition-transform duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-green disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
+  "button inline-flex items-center justify-center gap-2 rounded-[0.2rem] font-bold tracking-tight transition-[background-color,color,border-color,transform] duration-160 ease-out focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-brick disabled:pointer-events-none disabled:opacity-50 hover:-translate-y-0.5",
   {
     variants: {
       variant: {
         primary:
-          "bg-green text-cream shadow-[0_0_0_1px_rgb(18_53_38)] hover:bg-green-deep",
-        ink: "bg-ink text-cream hover:bg-ink-soft",
+          "bg-brick text-paper border border-brick hover:bg-ink hover:text-paper hover:border-ink",
+        ink: "bg-ink text-paper border border-ink hover:bg-brick hover:border-brick",
         outline:
-          "bg-transparent text-ink shadow-[0_0_0_1px_var(--color-line-strong)] hover:bg-paper-2",
-        ghost: "bg-transparent text-ink hover:bg-paper-2",
+          "bg-transparent text-ink border border-wood hover:border-brick hover:bg-cream",
+        ghost:
+          "bg-transparent text-ink border border-transparent hover:text-brick",
         cream:
-          "bg-cream text-green-deep shadow-[0_0_0_1px_rgb(250_247_240_/_0.2)] hover:bg-paper",
+          "bg-brick text-paper border border-brick hover:bg-ink hover:text-paper hover:border-ink",
       },
       size: {
-        sm: "h-10 min-h-10 rounded-md px-3.5 text-sm",
-        md: "h-12 min-h-12 rounded-md px-5 text-[0.95rem]",
-        lg: "h-14 min-h-14 rounded-lg px-6 text-base",
+        sm: "h-11 min-h-[2.75rem] px-[0.92rem] text-[0.82rem]",
+        md: "h-[3.35rem] min-h-[3.35rem] px-5 text-[0.91rem]",
+        lg: "h-16 min-h-16 px-[1.45rem] text-base",
       },
     },
     defaultVariants: {

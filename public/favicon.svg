@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Platinum Pawn">
-  <rect width="32" height="32" rx="6" fill="#1C4A32"/>
-  <path fill="#F3EFE6" fill-rule="evenodd" d="M9 6.5h8.6c4.05 0 6.85 2.35 6.85 6.35 0 4.05-2.8 6.45-6.95 6.45H13.2V25.5H9V6.5zm4.2 3.35v6.1h4.15c2.05 0 3.3-1.15 3.3-3.05 0-1.9-1.25-3.05-3.3-3.05H13.2z"/>
+  <rect width="32" height="32" fill="#0A0A0A"/>
+  <rect x="1.25" y="1.25" width="29.5" height="29.5" fill="none" stroke="#EFE7CE" stroke-width="1.25"/>
+  <path fill="#EDEDE7" fill-rule="evenodd" d="M9 6.5h8.6c4.05 0 6.85 2.35 6.85 6.35 0 4.05-2.8 6.45-6.95 6.45H13.2V25.5H9V6.5zm4.2 3.35v6.1h4.15c2.05 0 3.3-1.15 3.3-3.05 0-1.9-1.25-3.05-3.3-3.05H13.2z"/>
 </svg>
