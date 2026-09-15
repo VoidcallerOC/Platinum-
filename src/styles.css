@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Instrument Serif", Georgia, serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-display: "Outfit", "DM Sans", "Helvetica Neue", Arial, sans-serif;
   --font-sans: "DM Sans", "Helvetica Neue", Arial, sans-serif;
 
   --color-paper: #0c100e;
@@ -24,10 +23,12 @@
   --color-danger: #d37a7a;
   --color-focus: #8fd4a8;
 
-  --radius-sm: 0.2rem;
-  --radius-md: 0.2rem;
-  --radius-lg: 0.2rem;
-  --radius-xl: 0.35rem;
+  --radius-sm: 0.85rem;
+  --radius-md: 1.15rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-2xl: 1.75rem;
+  --radius-3xl: 2.25rem;
 
   --ease-forge: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -58,15 +59,15 @@
   h1,
   h2 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.04em;
-    line-height: 0.96;
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
     text-wrap: balance;
   }
 
   h3,
   h4 {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     font-weight: 600;
     letter-spacing: -0.03em;
     text-wrap: balance;
@@ -74,7 +75,8 @@
 
   h1 em,
   h2 em {
-    font-style: italic;
+    font-style: normal;
+    font-weight: 500;
     color: var(--color-green-bright);
   }
 
@@ -90,11 +92,6 @@
   ::selection {
     background: var(--color-green);
     color: var(--color-paper);
-  }
-
-  img {
-    outline: 1px solid rgb(232 236 230 / 0.1);
-    outline-offset: -1px;
   }
 
   a {
@@ -129,10 +126,10 @@
 .field-input {
   width: 100%;
   min-height: 3.35rem;
-  border-radius: 0.2rem;
+  border-radius: 1.15rem;
   background: var(--color-paper-2);
   color: var(--color-ink);
-  padding: 0.7rem 0.95rem;
+  padding: 0.7rem 1.1rem;
   box-shadow: 0 0 0 1px var(--color-wood);
   font: inherit;
 }
@@ -143,9 +140,8 @@
 }
 
 .marquee-band {
-  padding: 0.85rem 0;
+  padding: 0.95rem 0;
   background: var(--color-cream);
-  border-block: 1px solid var(--color-wood);
   overflow: hidden;
 }
 
@@ -163,10 +159,10 @@
 }
 
 .marquee-track span {
-  font-size: 0.78rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--color-muted);
   white-space: nowrap;
 }
@@ -184,11 +180,11 @@
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  padding: 0.45rem 0.95rem;
+  padding: 0.45rem 1.05rem;
   color: var(--color-ink);
   background: var(--color-cream);
   border: 1px solid var(--color-wood);
-  border-radius: 0.2rem;
+  border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 700;
 }
@@ -222,4 +218,5 @@
   padding: clamp(1.3rem, 3.5vw, 2.2rem);
   background: var(--color-cream);
   border: 1px solid var(--color-wood);
+  border-radius: 1.75rem;
 }

@@ -44,7 +44,7 @@ function QuotePage() {
         What are you bringing in?
       </h1>
       <p className="mt-4 text-lg text-ink-soft">{EXPECTATION_LINE}</p>
-      <div className="contact-form mt-10">
+      <div className="mt-10">
         <QuoteForm
           initialIntent={search.intent}
           initialCategory={search.category}

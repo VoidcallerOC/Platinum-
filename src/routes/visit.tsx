@@ -32,8 +32,8 @@ function VisitPage() {
 
       <div className="mt-12 grid gap-8 md:grid-cols-2">
         {LOCATION_LIST.map((loc) => (
-          <article key={loc.id} className="border-t border-ink pt-6">
-            <h2 className="font-display text-4xl font-normal tracking-tight">
+          <article key={loc.id} className="rounded-3xl border border-wood bg-cream p-6">
+            <h2 className="font-display text-4xl font-semibold tracking-tight">
               {loc.city}
             </h2>
             <p className="mt-2 text-lg">{loc.street}</p>

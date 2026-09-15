@@ -70,7 +70,7 @@ function GoldPage() {
           <img
             src="/images/cat-jewelry.jpg"
             alt="Gold jewelry and a coin on a green velvet pad, ready for inspection"
-            className="aspect-[4/3] w-full rounded-sm object-cover"
+            className="aspect-[4/3] w-full rounded-3xl object-cover"
             width={1600}
             height={1200}
           />

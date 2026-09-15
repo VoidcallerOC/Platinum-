@@ -81,8 +81,8 @@ function QuoteReceivedPage() {
       </dl>
 
       {loc ? (
-        <div className="mt-8 border border-wood bg-cream p-5">
-          <p className="font-display text-2xl tracking-tight">{loc.city}</p>
+        <div className="mt-8 rounded-3xl border border-wood bg-cream p-5">
+          <p className="font-display text-2xl font-semibold tracking-tight">{loc.city}</p>
           <p className="mt-1">{loc.addressLine}</p>
           <p className="text-sm text-muted">{loc.sundayNote}</p>
           <div className="mt-5 flex flex-wrap gap-2">

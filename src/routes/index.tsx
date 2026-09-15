@@ -53,15 +53,15 @@ function Hero() {
           <p className="text-[0.78rem] font-semibold tracking-[0.16em] text-green-bright uppercase">
             Two Connecticut shops · Bristol & New Britain
           </p>
-          <h1 className="mt-5 max-w-[13ch] font-display text-[clamp(3.2rem,7.7vw,7.3rem)] font-normal leading-[0.92] tracking-[-0.04em] text-ink">
+          <h1 className="mt-5 max-w-[13ch] font-display text-[clamp(3rem,7vw,6.4rem)] font-semibold leading-[0.98] tracking-[-0.045em] text-ink">
             {BUSINESS.heroLine}
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
-            <em className="text-ink not-italic">{BUSINESS.tagline}</em> Shop the
-            floor if you’re looking. Final offers happen at the counter — not
-            in a website calculator.
+            <em className="font-medium text-ink not-italic">{BUSINESS.tagline}</em>{" "}
+            Shop the floor if you’re looking. Final offers happen at the counter
+            — not in a website calculator.
           </p>
-          <div className="mt-10 grid grid-cols-2 border-t border-wood sm:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
             <IntentLink to="/pawn" label="Pawn" hint="Want it back" />
             <IntentLink to="/sell" label="Sell" hint="Let it go" />
             <IntentLink to="/shop" label="Shop" hint="See the floor" />
@@ -80,7 +80,7 @@ function Hero() {
           <img
             src="/images/hero-counter.jpg"
             alt="Jewelry, a watch, and a ring on a green felt pad at a pawn counter"
-            className="aspect-[4/5] w-full rounded-sm object-cover"
+            className="aspect-[4/5] w-full rounded-3xl object-cover"
             width={1600}
             height={2000}
           />
@@ -105,7 +105,7 @@ function IntentLink({
   return (
     <Link
       to={to}
-      className="group flex min-h-[5.75rem] flex-col justify-between border-b border-wood px-0 py-4 no-underline sm:border-r sm:px-4 sm:first:pl-0 sm:last:border-r-0 sm:last:pr-0"
+      className="group flex min-h-[5.75rem] flex-col justify-between rounded-2xl border border-wood bg-cream px-4 py-4 no-underline transition-colors hover:border-green"
     >
       <span className="font-display text-[1.7rem] leading-none tracking-tight text-ink group-hover:text-green-bright">
         {label}
@@ -159,7 +159,7 @@ function PawnSell() {
           Sell it if you don’t.
         </h2>
         <div className="mt-12 grid gap-4 md:grid-cols-2">
-          <article className="border border-wood bg-paper px-6 py-7 md:px-8">
+          <article className="rounded-3xl border border-wood bg-paper px-6 py-7 md:px-8">
             <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-green-bright uppercase">
               Pawn
             </p>
@@ -192,7 +192,7 @@ function PawnSell() {
               </Link>
             </Button>
           </article>
-          <article className="border border-green bg-paper px-6 py-7 md:px-8">
+          <article className="rounded-3xl border border-green bg-paper px-6 py-7 md:px-8">
             <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-green-bright uppercase">
               Sell
             </p>
@@ -272,7 +272,7 @@ function GoldBand() {
           <img
             src="/images/cat-jewelry.jpg"
             alt="Gold chains, rings, and a coin on a green velvet appraisal pad"
-            className="aspect-[4/3] w-full rounded-sm object-cover"
+            className="aspect-[4/3] w-full rounded-3xl object-cover"
             width={1600}
             height={1200}
           />
@@ -345,7 +345,7 @@ function ShopBand() {
                   <img
                     src={cat.image}
                     alt=""
-                    className="aspect-[4/5] w-full rounded-sm object-cover"
+                    className="aspect-[4/5] w-full rounded-2xl object-cover"
                   />
                 ) : null}
                 <p className="mt-2 text-sm font-medium group-hover:text-green-bright">
@@ -375,9 +375,9 @@ function LocationsBand() {
           {LOCATION_LIST.map((loc) => (
             <article
               key={loc.id}
-              className="flex flex-col border border-wood bg-cream p-6"
+              className="flex flex-col rounded-3xl border border-wood bg-cream p-6"
             >
-              <h3 className="font-display text-3xl font-normal tracking-tight">
+              <h3 className="font-display text-3xl font-semibold tracking-tight">
                 {loc.city}
               </h3>
               <p className="mt-2 text-lg">{loc.street}</p>
@@ -489,7 +489,7 @@ function FaqBand() {
           {FAQS.map((item) => (
             <details
               key={item.q}
-              className="mb-3 break-inside-avoid border border-wood bg-cream px-5 py-4"
+              className="mb-3 break-inside-avoid rounded-2xl border border-wood bg-cream px-5 py-4"
             >
               <summary className="cursor-pointer list-none font-medium text-ink marker:content-none [&::-webkit-details-marker]:hidden">
                 {item.q}

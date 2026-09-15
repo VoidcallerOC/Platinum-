@@ -38,10 +38,10 @@ function ShopPage() {
               <img
                 src={cat.image}
                 alt=""
-                className="aspect-[4/3] w-full rounded-sm object-cover"
+                className="aspect-[4/3] w-full rounded-3xl object-cover"
               />
             ) : null}
-            <h2 className="mt-3 font-display text-2xl font-normal tracking-tight">
+            <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight">
               {cat.short}
             </h2>
             <p className="mt-1 text-sm text-muted">
@@ -52,13 +52,13 @@ function ShopPage() {
       </ul>
 
       <section className="mt-16 border-t border-line pt-10">
-        <h2 className="font-display text-3xl font-normal tracking-tight">
+        <h2 className="font-display text-3xl font-semibold tracking-tight">
           Come look.
         </h2>
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           {LOCATION_LIST.map((loc) => (
-            <article key={loc.id} className="border border-wood bg-cream p-5">
-              <h3 className="font-display text-2xl font-normal">{loc.city}</h3>
+            <article key={loc.id} className="rounded-3xl border border-wood bg-cream p-5">
+              <h3 className="font-display text-2xl font-semibold">{loc.city}</h3>
               <p className="mt-1">{loc.street}</p>
               <p className="text-sm text-muted">{loc.sundayNote}</p>
               <Button asChild className="mt-4" size="sm">

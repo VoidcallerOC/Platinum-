@@ -20,7 +20,7 @@ export function StickyBar() {
               <a
                 key={loc.id}
                 href={open === "call" ? loc.phoneHref : loc.mapsUrl}
-                className="flex min-h-12 flex-col items-start justify-center rounded-sm border border-wood bg-cream px-3 no-underline"
+                className="flex min-h-12 flex-col items-start justify-center rounded-2xl border border-wood bg-cream px-3 no-underline"
               >
                 <span className="text-sm font-semibold text-ink">{loc.city}</span>
                 <span className="text-xs text-muted">

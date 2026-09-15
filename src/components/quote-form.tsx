@@ -116,7 +116,7 @@ export function QuoteForm({
 
   return (
     <form onSubmit={onSubmit} noValidate className="contact-form space-y-8">
-      <p className="border-l-4 border-brick bg-paper-2 px-[1.35rem] py-5 text-sm leading-relaxed text-ink">
+      <p className="rounded-2xl border-l-4 border-brick bg-paper-2 px-[1.35rem] py-5 text-sm leading-relaxed text-ink">
         {DEMO_NOTICE}
       </p>
 
@@ -125,7 +125,7 @@ export function QuoteForm({
           id={`${formId}-errors`}
           tabIndex={-1}
           role="alert"
-          className="border border-danger/30 bg-danger/8 px-4 py-3 text-sm text-danger"
+          className="rounded-2xl border border-danger/30 bg-danger/8 px-4 py-3 text-sm text-danger"
         >
           <p className="font-semibold">Fix the following to continue:</p>
           <ul className="mt-1 list-disc pl-5">
@@ -163,7 +163,7 @@ export function QuoteForm({
               <label
                 key={option.id}
                 className={cn(
-                  "flex min-h-24 cursor-pointer flex-col justify-center px-5 py-4 transition-colors",
+                  "flex min-h-24 cursor-pointer flex-col justify-center rounded-2xl px-5 py-4 transition-colors",
                   selected
                     ? "border border-green bg-green text-paper"
                     : "border border-wood bg-cream text-ink hover:border-green",
@@ -244,7 +244,7 @@ export function QuoteForm({
               <label
                 key={loc.id}
                 className={cn(
-                  "flex min-h-24 cursor-pointer flex-col justify-center px-5 py-4",
+                  "flex min-h-24 cursor-pointer flex-col justify-center rounded-2xl px-5 py-4",
                   selected
                     ? "border border-green bg-green text-paper"
                     : "border border-wood bg-cream text-ink hover:border-green",
@@ -364,7 +364,7 @@ export function QuoteForm({
           {PHOTO_GUIDANCE}
         </p>
         <div className="mt-4">
-          <label className="flex min-h-28 cursor-pointer flex-col items-center justify-center gap-2 rounded-sm border border-dashed border-line-strong bg-cream px-4 py-6 text-center hover:border-green">
+          <label className="flex min-h-28 cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-line-strong bg-cream px-4 py-6 text-center hover:border-green">
             <span className="text-sm font-bold">Add photos</span>
             <span className="text-xs text-muted">
               {photos.length} attached, {MAX_PHOTOS} maximum. Stays on this
@@ -388,12 +388,12 @@ export function QuoteForm({
                   <img
                     src={photo.url}
                     alt={`Upload ${index + 1}: ${photo.file.name}`}
-                    className="aspect-square w-full object-cover"
+                    className="aspect-square w-full rounded-2xl object-cover"
                   />
                   <button
                     type="button"
                     onClick={() => removePhoto(photo.id)}
-                    className="absolute top-1 right-1 flex size-8 items-center justify-center bg-paper text-ink"
+                    className="absolute top-1 right-1 flex size-8 items-center justify-center rounded-full bg-paper text-ink"
                     aria-label={`Remove ${photo.file.name}`}
                   >
                     ×
@@ -405,7 +405,7 @@ export function QuoteForm({
         </div>
       </fieldset>
 
-      <div className="border border-wood bg-cream px-5 py-5">
+      <div className="rounded-2xl border border-wood bg-cream px-5 py-5">
         <p className="text-xl font-semibold tracking-tight">Before you send</p>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-soft">
           {EXPECTATION_LINE}

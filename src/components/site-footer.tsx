@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer className="border-t border-line-strong bg-paper text-ink">
       <div className="shell grid gap-10 py-16 md:grid-cols-12">
         <div className="md:col-span-5">
-          <p className="font-display text-3xl tracking-tight">Platinum Pawn</p>
+          <p className="font-display text-3xl font-semibold tracking-tight">Platinum Pawn</p>
           <p className="mt-4 max-w-sm text-[0.95rem] leading-relaxed text-muted">
             Two Connecticut counters. Pawn it if you want it back. Sell it if
             you don’t. Shop the floor if you’re looking.

@@ -33,7 +33,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-line-strong bg-paper/82 backdrop-blur-[14px]">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-4 focus:z-50 focus:bg-green focus:px-3 focus:py-2 focus:text-paper"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-4 focus:z-50 focus:rounded-full focus:bg-green focus:px-3 focus:py-2 focus:text-paper"
       >
         Skip to content
       </a>
@@ -44,13 +44,13 @@ export function SiteHeader() {
           aria-label="Platinum Pawn home"
         >
           <span
-            className="flex size-8 items-center justify-center bg-green-deep font-display text-lg leading-none text-ink"
+            className="flex size-9 items-center justify-center rounded-full bg-green-deep font-display text-[1.05rem] font-semibold leading-none text-ink"
             aria-hidden="true"
           >
             P
           </span>
           <span className="flex flex-col leading-none">
-            <span className="font-display text-[1.45rem] tracking-[-0.02em] text-ink">
+            <span className="font-display text-[1.35rem] font-semibold tracking-[-0.03em] text-ink">
               Platinum Pawn
             </span>
             <span className="mt-1 text-[0.68rem] font-medium tracking-[0.16em] text-muted uppercase">
@@ -112,20 +112,20 @@ export function SiteHeader() {
             ))}
             <Link
               to="/quote"
-              className="mt-4 flex min-h-12 items-center justify-center rounded-sm bg-green text-base font-bold text-paper no-underline"
+              className="mt-4 flex min-h-12 items-center justify-center rounded-full bg-green text-base font-bold text-paper no-underline"
             >
               Request a quote
             </Link>
             <div className="mt-3 grid grid-cols-2 gap-2 pb-4">
               <a
                 href={LOCATIONS.bristol.phoneHref}
-                className="flex min-h-12 items-center justify-center rounded-sm border border-wood text-sm font-medium text-ink no-underline"
+                className="flex min-h-12 items-center justify-center rounded-full border border-wood text-sm font-medium text-ink no-underline"
               >
                 Call Bristol
               </a>
               <a
                 href={LOCATIONS["new-britain"].phoneHref}
-                className="flex min-h-12 items-center justify-center rounded-sm border border-wood text-sm font-medium text-ink no-underline"
+                className="flex min-h-12 items-center justify-center rounded-full border border-wood text-sm font-medium text-ink no-underline"
               >
                 Call New Britain
               </a>
