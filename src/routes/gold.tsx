@@ -67,13 +67,15 @@ function GoldPage() {
           </Button>
         </div>
         <figure className="md:col-span-6">
-          <img
-            src="/images/cat-jewelry.jpg"
-            alt="Gold jewelry and a coin on a green velvet pad, ready for inspection"
-            className="aspect-[4/3] w-full rounded-3xl object-cover"
-            width={1600}
-            height={1200}
-          />
+          <div className="photo-mat">
+            <img
+              src="/images/cat-jewelry.jpg"
+              alt="Gold jewelry and a coin on a green velvet pad, ready for inspection"
+              className="aspect-[4/3] w-full object-cover"
+              width={1600}
+              height={1200}
+            />
+          </div>
         </figure>
       </div>
       <section className="border-t border-line">
@@ -83,7 +85,7 @@ function GoldPage() {
               key={point.title}
               className="grid grid-cols-[auto_1fr] gap-5 border-t border-line py-7 first:border-t-0"
             >
-              <span className="font-display text-2xl text-muted">
+              <span className="ticket-no text-2xl">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>

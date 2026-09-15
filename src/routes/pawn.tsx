@@ -22,8 +22,8 @@ function PawnPage() {
   return (
     <main id="main" className="shell py-12 md:py-16">
       <SectionKicker>Pawn</SectionKicker>
-      <h1 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] tracking-tight md:text-6xl">
-        Pawn it if you want it back.
+      <h1 className="mt-3 max-w-3xl font-display text-5xl font-bold leading-[0.9] tracking-[-0.02em] md:text-6xl">
+        Pawn it if you <em>want it back.</em>
       </h1>
       <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">
         A pawn loan is cash against an item you still intend to redeem. No
@@ -47,7 +47,7 @@ function PawnPage() {
             key={step.title}
             className="grid grid-cols-[auto_1fr] gap-5 border-t border-line py-7"
           >
-            <span className="font-display text-2xl text-muted">
+            <span className="ticket-no text-2xl">
               {String(i + 1).padStart(2, "0")}
             </span>
             <div>

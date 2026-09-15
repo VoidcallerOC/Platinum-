@@ -50,11 +50,9 @@ function Hero() {
     <section className="relative overflow-hidden">
       <div className="shell grid items-end gap-[clamp(2.5rem,7vw,7rem)] py-[clamp(4.5rem,8vw,8.5rem)] md:grid-cols-12">
         <div className="md:col-span-7">
-          <p className="text-[0.78rem] font-semibold tracking-[0.16em] text-green-bright uppercase">
-            Two Connecticut shops · Bristol & New Britain
-          </p>
-          <h1 className="mt-5 max-w-[13ch] font-display text-[clamp(3rem,7vw,6.4rem)] font-semibold leading-[0.98] tracking-[-0.045em] text-ink">
-            {BUSINESS.heroLine}
+          <p className="kicker mb-0">Two Connecticut shops · Bristol & New Britain</p>
+          <h1 className="mt-5 max-w-[14ch] font-display text-[clamp(3.2rem,8vw,7rem)] font-bold leading-[0.9] tracking-[-0.02em] text-ink">
+            What do you need to do <em>with it?</em>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
             <em className="font-medium text-ink not-italic">{BUSINESS.tagline}</em>{" "}
@@ -62,10 +60,10 @@ function Hero() {
             — not in a website calculator.
           </p>
           <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <IntentLink to="/pawn" label="Pawn" hint="Want it back" />
-            <IntentLink to="/sell" label="Sell" hint="Let it go" />
-            <IntentLink to="/shop" label="Shop" hint="See the floor" />
-            <IntentLink to="/visit" label="Visit" hint="Two stores" />
+            <IntentLink to="/pawn" label="Pawn" hint="Want it back" index="01" />
+            <IntentLink to="/sell" label="Sell" hint="Let it go" index="02" />
+            <IntentLink to="/shop" label="Shop" hint="See the floor" index="03" />
+            <IntentLink to="/visit" label="Visit" hint="Two stores" index="04" />
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-6">
             <Button asChild size="lg">
@@ -77,15 +75,22 @@ function Hero() {
           </div>
         </div>
         <figure className="md:col-span-5">
-          <img
-            src="/images/hero-counter.jpg"
-            alt="Jewelry, a watch, and a ring on a green felt pad at a pawn counter"
-            className="aspect-[4/5] w-full rounded-3xl object-cover"
-            width={1600}
-            height={2000}
-          />
-          <figcaption className="mt-3 text-sm text-muted">
-            Bring the item. Bring ID. The appraisal happens here.
+          <div className="photo-mat">
+            <img
+              src="/images/hero-counter.jpg"
+              alt="Jewelry, a watch, and a ring on a green felt pad at a pawn counter"
+              className="aspect-[4/5] w-full object-cover"
+              width={1600}
+              height={2000}
+            />
+          </div>
+          <figcaption className="ticket-caption">
+            <span className="ticket-no block text-sm tracking-[0.16em] uppercase">
+              Counter
+            </span>
+            <span className="mt-1 block text-sm text-ink-soft">
+              Bring the item. Bring ID. The appraisal happens here.
+            </span>
           </figcaption>
         </figure>
       </div>
@@ -97,17 +102,20 @@ function IntentLink({
   to,
   label,
   hint,
+  index,
 }: {
   to: "/pawn" | "/sell" | "/shop" | "/visit";
   label: string;
   hint: string;
+  index: string;
 }) {
   return (
     <Link
       to={to}
-      className="group flex min-h-[5.75rem] flex-col justify-between rounded-2xl border border-wood bg-cream px-4 py-4 no-underline transition-colors hover:border-green"
+      className="ticket group flex min-h-[6.1rem] flex-col justify-between px-4 py-4 no-underline transition-colors hover:border-gold"
     >
-      <span className="font-display text-[1.7rem] leading-none tracking-tight text-ink group-hover:text-green-bright">
+      <span className="ticket-no text-sm">{index}</span>
+      <span className="font-display text-[1.85rem] leading-none tracking-wide text-ink group-hover:text-gold">
         {label}
       </span>
       <span className="text-[0.72rem] font-semibold tracking-[0.14em] text-muted uppercase">
@@ -147,7 +155,7 @@ function Marquee() {
 
 function PawnSell() {
   return (
-    <section className="section bg-cream" aria-labelledby="pawn-sell-heading">
+    <section className="section felt" aria-labelledby="pawn-sell-heading">
       <div className="shell">
         <SectionKicker index="01">Pawn or sell</SectionKicker>
         <h2
@@ -156,13 +164,11 @@ function PawnSell() {
         >
           Pawn it if you want it back.
           <br />
-          Sell it if you don’t.
+          <em>Sell it if you don’t.</em>
         </h2>
         <div className="mt-12 grid gap-4 md:grid-cols-2">
-          <article className="rounded-3xl border border-wood bg-paper px-6 py-7 md:px-8">
-            <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-green-bright uppercase">
-              Pawn
-            </p>
+          <article className="ticket px-6 py-7 md:px-8">
+            <p className="kicker mb-1">Pawn</p>
             <h3 className="mt-2 text-2xl tracking-tight">
               Need cash, keep the option.
             </h3>
@@ -176,7 +182,7 @@ function PawnSell() {
                   key={step.title}
                   className="flex gap-4 border-t border-line pt-3 first:border-t-0 first:pt-0"
                 >
-                  <span className="w-8 shrink-0 font-display text-xl text-muted">
+                  <span className="ticket-no w-8 shrink-0 text-xl">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span>
@@ -192,10 +198,8 @@ function PawnSell() {
               </Link>
             </Button>
           </article>
-          <article className="rounded-3xl border border-green bg-paper px-6 py-7 md:px-8">
-            <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-green-bright uppercase">
-              Sell
-            </p>
+          <article className="ticket border-gold px-6 py-7 md:px-8">
+            <p className="kicker mb-1">Sell</p>
             <h3 className="mt-2 text-2xl tracking-tight">
               Ready to part with it.
             </h3>
@@ -209,7 +213,7 @@ function PawnSell() {
                   key={step.title}
                   className="flex gap-4 border-t border-line pt-3 first:border-t-0 first:pt-0"
                 >
-                  <span className="w-8 shrink-0 font-display text-xl text-muted">
+                  <span className="ticket-no w-8 shrink-0 text-xl">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span>
@@ -269,13 +273,15 @@ function GoldBand() {
     <section className="section border-t border-line" aria-labelledby="gold-heading">
       <div className="shell grid items-center gap-10 md:grid-cols-12 md:gap-16">
         <figure className="md:col-span-6 md:col-start-7 md:row-start-1">
-          <img
-            src="/images/cat-jewelry.jpg"
-            alt="Gold chains, rings, and a coin on a green velvet appraisal pad"
-            className="aspect-[4/3] w-full rounded-3xl object-cover"
-            width={1600}
-            height={1200}
-          />
+          <div className="photo-mat">
+            <img
+              src="/images/cat-jewelry.jpg"
+              alt="Gold chains, rings, and a coin on a green velvet appraisal pad"
+              className="aspect-[4/3] w-full object-cover"
+              width={1600}
+              height={1200}
+            />
+          </div>
         </figure>
         <div className="md:col-span-5 md:row-start-1">
           <SectionKicker index="03">Gold & jewelry</SectionKicker>
@@ -283,7 +289,7 @@ function GoldBand() {
             id="gold-heading"
             className="mt-3 text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[1.05] tracking-tight"
           >
-            Broken, old, or still on the chain — they look at the metal.
+            Broken, old, or still on the chain — they look at <em>the metal.</em>
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-ink-soft">
             Gold, silver, diamonds, coins, and bullion are evaluated in store.
@@ -312,7 +318,7 @@ function GoldBand() {
 
 function ShopBand() {
   return (
-    <section className="section bg-cream" aria-labelledby="shop-heading">
+    <section className="section felt" aria-labelledby="shop-heading">
       <div className="shell">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
@@ -342,13 +348,15 @@ function ShopBand() {
                 aria-label={`Shop ${cat.short} in store`}
               >
                 {cat.image ? (
-                  <img
-                    src={cat.image}
-                    alt=""
-                    className="aspect-[4/5] w-full rounded-2xl object-cover"
-                  />
+                  <div className="photo-mat">
+                    <img
+                      src={cat.image}
+                      alt=""
+                      className="aspect-[4/5] w-full object-cover"
+                    />
+                  </div>
                 ) : null}
-                <p className="mt-2 text-sm font-medium group-hover:text-green-bright">
+                <p className="mt-2 font-display text-lg font-bold tracking-wide group-hover:text-gold">
                   {cat.short}
                 </p>
               </Link>
@@ -375,9 +383,9 @@ function LocationsBand() {
           {LOCATION_LIST.map((loc) => (
             <article
               key={loc.id}
-              className="flex flex-col rounded-3xl border border-wood bg-cream p-6"
+              className="ticket flex flex-col p-6"
             >
-              <h3 className="font-display text-3xl font-semibold tracking-tight">
+              <h3 className="font-display text-3xl font-bold tracking-wide">
                 {loc.city}
               </h3>
               <p className="mt-2 text-lg">{loc.street}</p>
@@ -442,7 +450,7 @@ function TrustBand() {
   ];
 
   return (
-    <section className="section bg-cream" aria-labelledby="trust-heading">
+    <section className="section felt" aria-labelledby="trust-heading">
       <div className="shell grid gap-12 md:grid-cols-12">
         <div className="md:col-span-4">
           <SectionKicker index="06">How this shop works</SectionKicker>
@@ -459,7 +467,7 @@ function TrustBand() {
               key={point.title}
               className="grid grid-cols-[auto_1fr] gap-5 border-t border-line py-6"
             >
-              <span className="font-display text-xl text-muted">
+              <span className="ticket-no text-xl">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
@@ -510,7 +518,7 @@ function FinalCta() {
     <section className="section">
       <div className="shell">
         <h2 className="max-w-3xl text-[clamp(2.6rem,6vw,5.4rem)] leading-[1.02] tracking-tight">
-          Sitting in the car with the item beside you?
+          Sitting in the car with the item <em>beside you?</em>
         </h2>
         <p className="mt-5 max-w-xl text-lg text-ink-soft">
           Request a quote, pick a store, then walk in. The website prepares the

@@ -9,10 +9,10 @@ export function LocationDetail({ id }: { id: LocationId }) {
 
   return (
     <article>
-      <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-green-bright uppercase">
+      <p className="kicker">
         {loc.city} · Connecticut
       </p>
-      <h1 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] tracking-tight md:text-6xl">
+      <h1 className="mt-3 max-w-3xl font-display text-5xl font-bold leading-[0.9] tracking-[-0.02em] md:text-6xl">
         {loc.street}
       </h1>
       <p className="mt-3 text-lg text-ink-soft">{loc.cityStateZip}</p>
@@ -35,7 +35,7 @@ export function LocationDetail({ id }: { id: LocationId }) {
 
       <div className="mt-12 grid gap-10 border-t border-line pt-10 md:grid-cols-12">
         <div className="md:col-span-5">
-          <h2 className="font-display text-3xl font-semibold tracking-tight">Hours</h2>
+          <h2 className="font-display text-3xl font-bold tracking-wide">Hours</h2>
           <dl className="mt-5 divide-y divide-line border-y border-line">
             {loc.hours.map((row) => (
               <div
@@ -50,7 +50,7 @@ export function LocationDetail({ id }: { id: LocationId }) {
           <p className="mt-4 text-sm text-muted">{loc.sundayNote}.</p>
         </div>
         <div className="md:col-span-6 md:col-start-7">
-          <h2 className="font-display text-3xl font-semibold tracking-tight">
+          <h2 className="font-display text-3xl font-bold tracking-wide">
             This counter
           </h2>
           <ul className="mt-5 space-y-4">

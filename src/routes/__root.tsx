@@ -25,7 +25,7 @@ export const Route = createRootRoute({
         name: "description",
         content: BUSINESS.description,
       },
-      { name: "theme-color", content: "#0C100E" },
+      { name: "theme-color", content: "#0B0F0C" },
       { name: "author", content: "Forge-CT" },
     ],
     links: [
@@ -44,7 +44,7 @@ export const Route = createRootRoute({
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap",
       },
     ],
   }),
@@ -75,9 +75,7 @@ function RootDocument() {
 function NotFound() {
   return (
     <main id="main" className="shell py-20">
-      <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-green-bright uppercase">
-        404
-      </p>
+      <p className="kicker">404</p>
       <h1 className="mt-3 font-display text-5xl tracking-tight">
         That page isn’t here.
       </h1>

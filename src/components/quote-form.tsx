@@ -13,6 +13,7 @@ import {
 import { isCategory, isIntent, isLocation, saveQuote } from "@/lib/quote-store";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import { ThreeBalls } from "./three-balls";
 
 const MAX_PHOTOS = 5;
 
@@ -116,7 +117,18 @@ export function QuoteForm({
 
   return (
     <form onSubmit={onSubmit} noValidate className="contact-form space-y-8">
-      <p className="rounded-2xl border-l-4 border-brick bg-paper-2 px-[1.35rem] py-5 text-sm leading-relaxed text-ink">
+      <header className="ticket-head">
+        <ThreeBalls className="shrink-0 text-gold" size={28} />
+        <div>
+          <p className="font-display text-lg font-bold tracking-[0.16em] text-gold uppercase">
+            Quote ticket
+          </p>
+          <p className="text-sm text-muted">
+            Not a price. The offer is made at the counter.
+          </p>
+        </div>
+      </header>
+      <p className="rounded-xl border-l-4 border-gold bg-paper-2 px-[1.35rem] py-5 text-sm leading-relaxed text-ink">
         {DEMO_NOTICE}
       </p>
 
@@ -163,10 +175,10 @@ export function QuoteForm({
               <label
                 key={option.id}
                 className={cn(
-                  "flex min-h-24 cursor-pointer flex-col justify-center rounded-2xl px-5 py-4 transition-colors",
+                  "ticket flex min-h-24 cursor-pointer flex-col justify-center px-5 py-4 transition-colors",
                   selected
-                    ? "border border-green bg-green text-paper"
-                    : "border border-wood bg-cream text-ink hover:border-green",
+                    ? "border-gold bg-green-deep"
+                    : "hover:border-gold",
                 )}
               >
                 <input
@@ -180,13 +192,13 @@ export function QuoteForm({
                     setErrors((e) => ({ ...e, intent: "" }));
                   }}
                 />
-                <span className="text-xl font-semibold tracking-tight">
+                <span className="font-display text-xl font-bold tracking-wide text-gold">
                   {option.title}
                 </span>
                 <span
                   className={cn(
                     "mt-1 text-sm",
-                    selected ? "text-paper/80" : "text-muted",
+                    selected ? "text-ink-soft" : "text-muted",
                   )}
                 >
                   {option.body}
@@ -244,10 +256,8 @@ export function QuoteForm({
               <label
                 key={loc.id}
                 className={cn(
-                  "flex min-h-24 cursor-pointer flex-col justify-center rounded-2xl px-5 py-4",
-                  selected
-                    ? "border border-green bg-green text-paper"
-                    : "border border-wood bg-cream text-ink hover:border-green",
+                  "ticket flex min-h-24 cursor-pointer flex-col justify-center px-5 py-4",
+                  selected ? "border-gold bg-green-deep" : "hover:border-gold",
                 )}
               >
                 <input
@@ -261,13 +271,13 @@ export function QuoteForm({
                     setErrors((e) => ({ ...e, location: "" }));
                   }}
                 />
-                <span className="text-xl font-semibold tracking-tight">
+                <span className="font-display text-xl font-bold tracking-wide">
                   {loc.city}
                 </span>
                 <span
                   className={cn(
                     "mt-1 text-sm",
-                    selected ? "text-paper/80" : "text-muted",
+                    selected ? "text-ink-soft" : "text-muted",
                   )}
                 >
                   {loc.street}
@@ -364,7 +374,7 @@ export function QuoteForm({
           {PHOTO_GUIDANCE}
         </p>
         <div className="mt-4">
-          <label className="flex min-h-28 cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-line-strong bg-cream px-4 py-6 text-center hover:border-green">
+          <label className="flex min-h-28 cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-gold-deep bg-paper-2 px-4 py-6 text-center hover:border-gold">
             <span className="text-sm font-bold">Add photos</span>
             <span className="text-xs text-muted">
               {photos.length} attached, {MAX_PHOTOS} maximum. Stays on this
@@ -388,7 +398,7 @@ export function QuoteForm({
                   <img
                     src={photo.url}
                     alt={`Upload ${index + 1}: ${photo.file.name}`}
-                    className="aspect-square w-full rounded-2xl object-cover"
+                    className="aspect-square w-full rounded-xl object-cover"
                   />
                   <button
                     type="button"
@@ -405,8 +415,8 @@ export function QuoteForm({
         </div>
       </fieldset>
 
-      <div className="rounded-2xl border border-wood bg-cream px-5 py-5">
-        <p className="text-xl font-semibold tracking-tight">Before you send</p>
+      <div className="rounded-xl border border-wood bg-paper-2 px-5 py-5">
+        <p className="font-display text-xl font-bold tracking-wide">Before you send</p>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-soft">
           {EXPECTATION_LINE}
         </p>

@@ -4,6 +4,7 @@ import { useEffect, useId, useState } from "react";
 import { LOCATIONS } from "@/lib/business";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import { ThreeBalls } from "./three-balls";
 
 const NAV = [
   { to: "/pawn", label: "Pawn" },
@@ -30,30 +31,25 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line-strong bg-paper/82 backdrop-blur-[14px]">
+    <header className="sticky top-0 z-40 border-b border-line-strong bg-paper/88 backdrop-blur-[14px]">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-4 focus:z-50 focus:rounded-full focus:bg-green focus:px-3 focus:py-2 focus:text-paper"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-4 focus:z-50 focus:rounded-xl focus:bg-gold focus:px-3 focus:py-2 focus:text-paper"
       >
         Skip to content
       </a>
-      <div className="shell flex min-h-[5.3rem] items-center justify-between gap-4">
+      <div className="shell flex min-h-[5.4rem] items-center justify-between gap-4">
         <Link
           to="/"
           className="flex items-center gap-3 no-underline"
           aria-label="Platinum Pawn home"
         >
-          <span
-            className="flex size-9 items-center justify-center rounded-full bg-green-deep font-display text-[1.05rem] font-semibold leading-none text-ink"
-            aria-hidden="true"
-          >
-            P
-          </span>
+          <ThreeBalls className="text-gold" size={34} />
           <span className="flex flex-col leading-none">
-            <span className="font-display text-[1.35rem] font-semibold tracking-[-0.03em] text-ink">
+            <span className="font-display text-[1.75rem] font-bold tracking-[0.06em] text-ink">
               Platinum Pawn
             </span>
-            <span className="mt-1 text-[0.68rem] font-medium tracking-[0.16em] text-muted uppercase">
+            <span className="mt-1 text-[0.68rem] font-semibold tracking-[0.18em] text-gold uppercase">
               Bristol · New Britain
             </span>
           </span>
@@ -70,8 +66,8 @@ export function SiteHeader() {
                 className={cn(
                   "text-[0.91rem] font-medium no-underline underline-offset-[0.32em] transition-colors",
                   active
-                    ? "text-green-bright underline"
-                    : "text-ink hover:text-green-bright hover:underline",
+                    ? "text-gold underline"
+                    : "text-ink hover:text-gold hover:underline",
                 )}
               >
                 {item.label}
@@ -112,20 +108,20 @@ export function SiteHeader() {
             ))}
             <Link
               to="/quote"
-              className="mt-4 flex min-h-12 items-center justify-center rounded-full bg-green text-base font-bold text-paper no-underline"
+              className="mt-4 flex min-h-12 items-center justify-center rounded-lg bg-green text-base font-bold text-paper no-underline"
             >
               Request a quote
             </Link>
             <div className="mt-3 grid grid-cols-2 gap-2 pb-4">
               <a
                 href={LOCATIONS.bristol.phoneHref}
-                className="flex min-h-12 items-center justify-center rounded-full border border-wood text-sm font-medium text-ink no-underline"
+                className="flex min-h-12 items-center justify-center rounded-lg border border-wood text-sm font-medium text-ink no-underline"
               >
                 Call Bristol
               </a>
               <a
                 href={LOCATIONS["new-britain"].phoneHref}
-                className="flex min-h-12 items-center justify-center rounded-full border border-wood text-sm font-medium text-ink no-underline"
+                className="flex min-h-12 items-center justify-center rounded-lg border border-wood text-sm font-medium text-ink no-underline"
               >
                 Call New Britain
               </a>

@@ -57,10 +57,8 @@ function QuoteReceivedPage() {
 
   return (
     <main id="main" className="shell max-w-2xl py-12 md:py-20">
-      <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-green-bright uppercase">
-        Demo confirmation
-      </p>
-      <h1 className="mt-3 font-display text-5xl leading-[0.95] tracking-tight">
+      <p className="kicker">Demo confirmation</p>
+      <h1 className="mt-3 font-display text-5xl font-bold leading-[0.9] tracking-[-0.02em]">
         You’re all set.
       </h1>
       <p className="mt-4 text-xl text-ink-soft">Your request has been received.</p>
@@ -81,8 +79,9 @@ function QuoteReceivedPage() {
       </dl>
 
       {loc ? (
-        <div className="mt-8 rounded-3xl border border-wood bg-cream p-5">
-          <p className="font-display text-2xl font-semibold tracking-tight">{loc.city}</p>
+        <div className="ticket mt-8 p-5">
+          <p className="kicker mb-1">Bring it here</p>
+          <p className="font-display text-2xl font-bold tracking-wide">{loc.city}</p>
           <p className="mt-1">{loc.addressLine}</p>
           <p className="text-sm text-muted">{loc.sundayNote}</p>
           <div className="mt-5 flex flex-wrap gap-2">

@@ -35,13 +35,15 @@ function ShopPage() {
         {SHOP_CATEGORIES.map((cat) => (
           <li key={cat.id}>
             {cat.image ? (
-              <img
-                src={cat.image}
-                alt=""
-                className="aspect-[4/3] w-full rounded-3xl object-cover"
-              />
+              <div className="photo-mat">
+                <img
+                  src={cat.image}
+                  alt=""
+                  className="aspect-[4/3] w-full object-cover"
+                />
+              </div>
             ) : null}
-            <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight">
+            <h2 className="mt-3 font-display text-2xl font-bold tracking-wide">
               {cat.short}
             </h2>
             <p className="mt-1 text-sm text-muted">
@@ -57,8 +59,8 @@ function ShopPage() {
         </h2>
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           {LOCATION_LIST.map((loc) => (
-            <article key={loc.id} className="rounded-3xl border border-wood bg-cream p-5">
-              <h3 className="font-display text-2xl font-semibold">{loc.city}</h3>
+            <article key={loc.id} className="ticket p-5">
+              <h3 className="font-display text-2xl font-bold tracking-wide">{loc.city}</h3>
               <p className="mt-1">{loc.street}</p>
               <p className="text-sm text-muted">{loc.sundayNote}</p>
               <Button asChild className="mt-4" size="sm">

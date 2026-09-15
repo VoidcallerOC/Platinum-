@@ -1,34 +1,39 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Outfit", "DM Sans", "Helvetica Neue", Arial, sans-serif;
-  --font-sans: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Big Shoulders Display", "Figtree", "Helvetica Neue", Arial,
+    sans-serif;
+  --font-sans: "Figtree", "Helvetica Neue", Arial, sans-serif;
 
-  --color-paper: #0c100e;
-  --color-paper-2: #1c2420;
-  --color-cream: #141a16;
-  --color-ink: #e8ece6;
-  --color-ink-soft: #c5cbc3;
-  --color-muted: #8b938a;
-  --color-line: #232a26;
-  --color-line-strong: #3d4840;
-  --color-wood: #2f3a34;
+  --color-paper: #0b0f0c;
+  --color-paper-2: #151c18;
+  --color-cream: #121916;
+  --color-felt: #1a3326;
+  --color-ink: #f3efe4;
+  --color-ink-soft: #d4cec0;
+  --color-muted: #9a9486;
+  --color-line: #27332c;
+  --color-line-strong: #3c4a40;
+  --color-wood: #3a463e;
   --color-green: #3f9d64;
   --color-green-deep: #1e4d32;
   --color-green-bright: #8fd4a8;
+  --color-gold: #c9a45c;
+  --color-gold-hi: #e8d39a;
+  --color-gold-deep: #8a6a32;
   --color-brick: #3f9d64;
   --color-brick-deep: #1e4d32;
-  --color-accent: #3f9d64;
-  --color-accent-hi: #8fd4a8;
+  --color-accent: #c9a45c;
+  --color-accent-hi: #e8d39a;
   --color-danger: #d37a7a;
-  --color-focus: #8fd4a8;
+  --color-focus: #e8d39a;
 
-  --radius-sm: 0.85rem;
-  --radius-md: 1.15rem;
-  --radius-lg: 1.5rem;
-  --radius-xl: 2rem;
-  --radius-2xl: 1.75rem;
-  --radius-3xl: 2.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.7rem;
+  --radius-lg: 0.8rem;
+  --radius-xl: 1.05rem;
+  --radius-2xl: 1.1rem;
+  --radius-3xl: 1.35rem;
 
   --ease-forge: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -59,25 +64,25 @@
   h1,
   h2 {
     font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.045em;
-    line-height: 0.98;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 0.9;
     text-wrap: balance;
   }
 
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.03em;
+    font-weight: 700;
+    letter-spacing: 0.01em;
     text-wrap: balance;
   }
 
   h1 em,
   h2 em {
     font-style: normal;
-    font-weight: 500;
-    color: var(--color-green-bright);
+    font-weight: 700;
+    color: var(--color-gold);
   }
 
   p {
@@ -85,12 +90,12 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-green-bright);
+    outline: 2px solid var(--color-gold-hi);
     outline-offset: 3px;
   }
 
   ::selection {
-    background: var(--color-green);
+    background: var(--color-gold);
     color: var(--color-paper);
   }
 
@@ -123,10 +128,97 @@
   padding-block: clamp(5rem, 9vw, 9rem);
 }
 
+@layer components {
+.kicker {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.ticket-no {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.felt {
+  background-color: var(--color-cream);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(201 164 92 / 0.08) 1px,
+    transparent 1.5px
+  );
+  background-size: 6px 6px;
+}
+
+.photo-mat {
+  background: var(--color-felt);
+  padding: 0.42rem;
+  border-radius: 1.4rem;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-gold) 38%, transparent);
+}
+
+.photo-mat img {
+  display: block;
+  width: 100%;
+  border-radius: 1.05rem;
+}
+
+.ticket {
+  position: relative;
+  background: var(--color-cream);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-wood);
+  border-radius: 1.15rem;
+  overflow: hidden;
+}
+
+.ticket::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0.85rem;
+  top: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--color-gold) 55%, transparent) 12%,
+    color-mix(in srgb, var(--color-gold) 55%, transparent) 88%,
+    transparent
+  );
+}
+
+.ticket-caption {
+  position: relative;
+  z-index: 1;
+  margin: -1.35rem 0.9rem 0;
+  background: var(--color-cream);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 42%, transparent);
+  border-radius: 0.95rem;
+  padding: 0.85rem 1rem 0.95rem;
+  box-shadow: 0 10px 28px rgb(0 0 0 / 0.28);
+}
+
+.ticket-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px dashed color-mix(in srgb, var(--color-gold) 42%, transparent);
+}
+
 .field-input {
   width: 100%;
   min-height: 3.35rem;
-  border-radius: 1.15rem;
+  border-radius: 0.9rem;
   background: var(--color-paper-2);
   color: var(--color-ink);
   padding: 0.7rem 1.1rem;
@@ -135,14 +227,16 @@
 }
 
 .field-input:focus {
-  outline: 2px solid var(--color-green-bright);
+  outline: 2px solid var(--color-gold-hi);
   outline-offset: 2px;
 }
 
 .marquee-band {
-  padding: 0.95rem 0;
-  background: var(--color-cream);
+  padding: 0.85rem 0;
+  background: var(--color-felt);
   overflow: hidden;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-gold) 28%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, var(--color-gold) 28%, transparent);
 }
 
 .marquee {
@@ -153,18 +247,31 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  gap: 2.5rem;
-  padding-left: 2.5rem;
+  gap: 2.4rem;
+  padding-left: 2.4rem;
   animation: marquee 38s linear infinite;
 }
 
 .marquee-track span {
   font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--color-muted);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold-hi);
   white-space: nowrap;
+}
+
+.marquee-track span + span::before {
+  content: "";
+  display: inline-block;
+  width: 0.42rem;
+  height: 0.42rem;
+  margin-right: 2.4rem;
+  border-radius: 999px;
+  background: var(--color-gold);
+  vertical-align: 0.12em;
+  box-shadow: 0.55rem 0 0 var(--color-gold), -0.55rem 0 0 var(--color-gold);
 }
 
 @keyframes marquee {
@@ -180,23 +287,23 @@
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  padding: 0.45rem 1.05rem;
+  padding: 0.45rem 1rem;
   color: var(--color-ink);
   background: var(--color-cream);
   border: 1px solid var(--color-wood);
-  border-radius: 999px;
+  border-radius: 0.8rem;
   font-size: 0.85rem;
   font-weight: 700;
 }
 
 .chip:hover {
-  border-color: var(--color-green);
+  border-color: var(--color-gold);
 }
 
 .chip.is-active {
   color: var(--color-paper);
-  background: var(--color-green);
-  border-color: var(--color-green);
+  background: var(--color-gold);
+  border-color: var(--color-gold);
 }
 
 .text-link {
@@ -204,19 +311,20 @@
   font-size: 0.95rem;
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: var(--color-wood);
-  text-decoration-thickness: 0.2em;
+  text-decoration-color: var(--color-gold-deep);
+  text-decoration-thickness: 0.18em;
   text-underline-offset: 0.28em;
 }
 
 .text-link:hover,
 .text-link:focus-visible {
-  text-decoration-color: var(--color-green);
+  text-decoration-color: var(--color-gold);
 }
 
 .contact-form {
   padding: clamp(1.3rem, 3.5vw, 2.2rem);
   background: var(--color-cream);
-  border: 1px solid var(--color-wood);
-  border-radius: 1.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 28%, var(--color-wood));
+  border-radius: 1.25rem;
+}
 }

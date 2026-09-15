@@ -40,8 +40,8 @@ function QuotePage() {
   return (
     <main id="main" className="shell max-w-3xl py-12 md:py-16">
       <SectionKicker>Request a quote</SectionKicker>
-      <h1 className="mt-3 font-display text-5xl leading-[0.95] tracking-tight">
-        What are you bringing in?
+      <h1 className="mt-3 font-display text-5xl font-bold leading-[0.9] tracking-[-0.02em]">
+        What are you <em>bringing in?</em>
       </h1>
       <p className="mt-4 text-lg text-ink-soft">{EXPECTATION_LINE}</p>
       <div className="mt-10">
