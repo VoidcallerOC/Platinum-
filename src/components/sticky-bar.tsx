@@ -12,7 +12,7 @@ export function StickyBar() {
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line-strong bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md lg:hidden">
       {open ? (
         <div className="border-b border-line px-4 py-3">
-          <p className="text-[0.72rem] font-bold tracking-[0.06em] text-brick uppercase">
+          <p className="text-[0.72rem] font-semibold tracking-[0.14em] text-muted uppercase">
             {open === "call" ? "Call a location" : "Get directions"}
           </p>
           <div className="mt-2 grid grid-cols-2 gap-2">
@@ -20,7 +20,7 @@ export function StickyBar() {
               <a
                 key={loc.id}
                 href={open === "call" ? loc.phoneHref : loc.mapsUrl}
-                className="flex min-h-12 flex-col items-start justify-center border border-wood bg-cream px-3 no-underline"
+                className="flex min-h-12 flex-col items-start justify-center rounded-sm border border-wood bg-cream px-3 no-underline"
               >
                 <span className="text-sm font-semibold text-ink">{loc.city}</span>
                 <span className="text-xs text-muted">
@@ -42,7 +42,7 @@ export function StickyBar() {
         </button>
         <Link
           to="/quote"
-          className="flex min-h-14 items-center justify-center bg-brick text-[0.7rem] font-bold tracking-wide text-paper no-underline uppercase"
+          className="flex min-h-14 items-center justify-center bg-green text-[0.7rem] font-bold tracking-wide text-paper no-underline uppercase"
         >
           Quote
         </Link>

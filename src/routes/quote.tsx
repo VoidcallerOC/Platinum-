@@ -40,11 +40,11 @@ function QuotePage() {
   return (
     <main id="main" className="shell max-w-3xl py-12 md:py-16">
       <SectionKicker>Request a quote</SectionKicker>
-      <h1 className="mt-3 font-display text-[clamp(3.2rem,6vw,5.4rem)] font-medium leading-[0.96] tracking-[-0.04em]">
+      <h1 className="mt-3 font-display text-5xl leading-[0.95] tracking-tight">
         What are you bringing in?
       </h1>
-      <p className="mt-4 max-w-[52ch] text-lg text-muted">{EXPECTATION_LINE}</p>
-      <div className="mt-10">
+      <p className="mt-4 text-lg text-ink-soft">{EXPECTATION_LINE}</p>
+      <div className="contact-form mt-10">
         <QuoteForm
           initialIntent={search.intent}
           initialCategory={search.category}

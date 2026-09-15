@@ -12,7 +12,6 @@ import {
 } from "@/lib/business";
 import { isCategory, isIntent, isLocation, saveQuote } from "@/lib/quote-store";
 import { cn } from "@/lib/utils";
-import { Glyph } from "./glyph";
 import { Button } from "./ui/button";
 
 const MAX_PHOTOS = 5;
@@ -166,8 +165,8 @@ export function QuoteForm({
                 className={cn(
                   "flex min-h-24 cursor-pointer flex-col justify-center px-5 py-4 transition-colors",
                   selected
-                    ? "border border-brick bg-brick text-paper"
-                    : "border border-wood bg-cream text-ink hover:border-brick",
+                    ? "border border-green bg-green text-paper"
+                    : "border border-wood bg-cream text-ink hover:border-green",
                 )}
               >
                 <input
@@ -247,8 +246,8 @@ export function QuoteForm({
                 className={cn(
                   "flex min-h-24 cursor-pointer flex-col justify-center px-5 py-4",
                   selected
-                    ? "border border-brick bg-brick text-paper"
-                    : "border border-wood bg-cream text-ink hover:border-brick",
+                    ? "border border-green bg-green text-paper"
+                    : "border border-wood bg-cream text-ink hover:border-green",
                 )}
               >
                 <input
@@ -365,7 +364,7 @@ export function QuoteForm({
           {PHOTO_GUIDANCE}
         </p>
         <div className="mt-4">
-          <label className="flex min-h-28 cursor-pointer flex-col items-center justify-center gap-2 border border-dashed border-line-strong bg-cream px-4 py-6 text-center hover:border-brick">
+          <label className="flex min-h-28 cursor-pointer flex-col items-center justify-center gap-2 rounded-sm border border-dashed border-line-strong bg-cream px-4 py-6 text-center hover:border-green">
             <span className="text-sm font-bold">Add photos</span>
             <span className="text-xs text-muted">
               {photos.length} attached, {MAX_PHOTOS} maximum. Stays on this
@@ -406,11 +405,9 @@ export function QuoteForm({
         </div>
       </fieldset>
 
-      <div className="border-2 border-brick bg-cream px-5 py-5 shadow-[0.3rem_0.3rem_0_var(--color-brick)]">
-        <p className="text-[0.72rem] font-bold tracking-[0.06em] text-brick uppercase">
-          Before you send
-        </p>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink">
+      <div className="border border-wood bg-cream px-5 py-5">
+        <p className="text-xl font-semibold tracking-tight">Before you send</p>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-soft">
           {EXPECTATION_LINE}
         </p>
       </div>
@@ -418,7 +415,6 @@ export function QuoteForm({
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <Button type="submit" size="lg" disabled={submitting}>
           {submitting ? "Saving request…" : "Submit request"}
-          {submitting ? null : <Glyph />}
         </Button>
         <p className="text-sm text-muted">{DEMO_NOTICE}</p>
       </div>
